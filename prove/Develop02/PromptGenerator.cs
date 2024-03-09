@@ -10,14 +10,16 @@ namespace ca1050
             "prompt3",
             "prompt4",
             "prompt5",
-            "prompt6"
+            "prompt6",
+            "prompt7"
         };
         
         public string GetRandomPrompt()
         {
             Random randomValue = new Random();
             int index = randomValue.Next(_prompts.Count);
-            return _prompts[index];
+            string requiredPrompt = _prompts[index];
+            return requiredPrompt;
         }
     }
 }

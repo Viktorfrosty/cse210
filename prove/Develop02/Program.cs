@@ -6,6 +6,8 @@ class Program
     static void Main(string[] args)
     {
 
+        Journal myJournal = new Journal();
+
         bool init = true;
 
         Console.WriteLine("Welcome to the Personal Journal Assitant V0.1\n");
@@ -19,30 +21,43 @@ class Program
             switch (int.Parse(userSelection))
             {
                 case 1:
+
+                    Entry entryData = new Entry();
+
+                    DateTime currentTime = DateTime.Now;
+                    entryData._entryDate = currentTime.ToShortDateString();
+
                     PromptGenerator prompt = new PromptGenerator();
-                    prompt.GetRandomPrompt();
-                    Entry entry = new Entry();
-                    entry._promptText = prompt.ToString();
+                    string selectedPrompt = prompt.GetRandomPrompt();
+                    entryData._promptText = selectedPrompt;
 
-                    DateTime theCurrentTime = DateTime.Now;
-                    entry._entryDate = theCurrentTime.ToShortDateString();
+                    Console.WriteLine($"Date:{currentTime}\n{selectedPrompt}");
 
-                    entry._entryText = Console.ReadLine();
+                    entryData._entryText = Console.ReadLine();
 
-                    entry.AddEntry();
+                    myJournal._entries.Add(entryData);
 
                     break;
+
                 case 2:
-                    Journal myJournal = new Journal();
+
                     myJournal.DisplayJournal();
                     break;
+
                 case 3:
+
                     break;
+
                 case 4:
+
                     break;
-                                                case 5:
-                                                    Console.WriteLine("Goodbye");
-                                                    init = false;
+                
+                case 5:
+
+                    Console.WriteLine("Goodbye");
+
+                    init = false;
+
                     break;
             }
         }

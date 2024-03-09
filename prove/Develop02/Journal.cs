@@ -9,7 +9,6 @@ namespace ca1050
 
         public void AddEntry(Entry newEntry)
         {
-            
             _entries.Add(newEntry);
         }
 
