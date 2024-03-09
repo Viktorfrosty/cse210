@@ -47,7 +47,7 @@ class Program
                         entryData._entryText = Console.ReadLine();
 
                         myJournal._entries.Add(entryData);
-                        Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}.");
+                        Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}");
                         break;
 
                     case 2:
@@ -70,6 +70,10 @@ class Program
                         Console.WriteLine("Goodbye.");
 
                         init = false;
+                        break;
+                    
+                    default:
+                        Console.WriteLine($"\nInvalid selection: Please choose a valid option.");
                         break;
                 }
             }

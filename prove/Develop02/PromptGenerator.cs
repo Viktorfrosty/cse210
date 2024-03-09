@@ -5,13 +5,13 @@ namespace ca1050
 
         public List<string> _prompts = new List<string>()
         {
-            "prompt1.",
-            "prompt2.",
-            "prompt3.",
-            "prompt4.",
-            "prompt5.",
-            "prompt6.",
-            "prompt7."
+            "What did I learn today?",
+            "What act of kindness did I perform today?",
+            "What kind of blessings I received today?",
+            "What was the best part of my day?",
+            "If I had one thing I could do over today, what would it be?",
+            "How did I see the hand of the Lord in my life today?",
+            "What am I grateful for today?"
         };
         
         public string GetRandomPrompt()
