@@ -1,6 +1,9 @@
 /* Exceeding requirements: 
 - Extra info save on the entry as _entryCode (Entry number).
 - Added try-catch statement to handle a faulty selection at the beggining.
+- handled the way the program read the CSV file.
+- Added handlers for "entries not found" and "file not found"
+- A total of seven random prompts are loaded in the generator.
 */
 using ca1050;
 
@@ -44,33 +47,29 @@ class Program
                         entryData._entryText = Console.ReadLine();
 
                         myJournal._entries.Add(entryData);
-                        Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}.\n");
+                        Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}.");
                         break;
 
                     case 2:
 
                         myJournal.DisplayJournal();
-
                         break;
 
                     case 3:
 
                         myJournal.SaveToFile();
-
                         break;
 
                     case 4:
 
                         myJournal.LoadFromFile();
-
                         break;
                     
                     case 5:
 
-                        Console.WriteLine("Goodbye");
+                        Console.WriteLine("Goodbye.");
 
                         init = false;
-
                         break;
                 }
             }

@@ -5,13 +5,13 @@ namespace ca1050
 
         public List<string> _prompts = new List<string>()
         {
-            "prompt1",
-            "prompt2",
-            "prompt3",
-            "prompt4",
-            "prompt5",
-            "prompt6",
-            "prompt7"
+            "prompt1.",
+            "prompt2.",
+            "prompt3.",
+            "prompt4.",
+            "prompt5.",
+            "prompt6.",
+            "prompt7."
         };
         
         public string GetRandomPrompt()
