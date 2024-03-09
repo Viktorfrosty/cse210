@@ -2,6 +2,7 @@ namespace ca1050
 {
     public class Entry
     {
+        
         // Challenge extra info save on the entry, entry number as _entryCode.
         public int _entryCode;
 
@@ -15,7 +16,9 @@ namespace ca1050
         {
 
             Console.WriteLine($"\nEntry number: {_entryCode}\nDate: {_entryDate}\nPrompt: {_promptText}\n{_entryText}");
-            
+
         }
+
     }
+
 }

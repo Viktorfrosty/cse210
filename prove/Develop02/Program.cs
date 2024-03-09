@@ -23,10 +23,12 @@ class Program
         {
 
             // challenge element added.
+            
             try
             {
             
                 Console.Write("\nTo proceed select the number one of the following options:\n1) New entry.\n2) Display entries.\n3) Save to a file.\n4) Load from a file\n5) exit the program.\nYour Selection: ");
+
                 string userSelection = Console.ReadLine();
 
                 switch (int.Parse(userSelection))
@@ -91,13 +93,18 @@ class Program
                         break;
 
                 }
+
             }
+
             catch (Exception inputError)
             {
 
                 Console.WriteLine($"\nInvalid selection: {inputError.Message}");
-                
+
             }
+
         }
+
     }
+
 }

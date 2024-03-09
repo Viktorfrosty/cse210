@@ -48,7 +48,7 @@ namespace ca1050
                 {
 
                     outputFile.WriteLine($"{entry._entryCode}<|>{entry._entryDate}<|>{entry._promptText}<|>{entry._entryText}");
-                    
+
                 }
 
             }
@@ -73,23 +73,34 @@ namespace ca1050
                 {
 
                     Entry newEntry = new Entry();
+
                     string[] parts = line.Split("<|>");
 
                     newEntry._entryCode = int.Parse(parts[0]);
+
                     newEntry._entryDate = parts[1];
+
                     newEntry._promptText = parts[2];
+
                     newEntry._entryText = parts[3];
+
                     _entries.Add(newEntry);
+
                 }
 
                 Console.WriteLine($"\nJournal loaded from {fileName}.");
+
             }
+
             else
             {
 
                 Console.WriteLine("\nNo journal file found.");
 
             }
+
         }
+        
     }
+
 }
