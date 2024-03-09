@@ -5,6 +5,7 @@
 - Added handlers for "entries not found" and "file not found"
 - A total of seven random prompts are loaded in the generator.
 */
+
 using ca1050;
 
 class Program
@@ -20,6 +21,7 @@ class Program
 
         while (init == true)
         {
+
             // challenge element added.
             try
             {
@@ -29,6 +31,7 @@ class Program
 
                 switch (int.Parse(userSelection))
                 {
+
                     case 1:
 
                         Entry entryData = new Entry();
@@ -36,10 +39,13 @@ class Program
                         entryData._entryCode = myJournal._entries.Count + 1;
 
                         DateTime currentTime = DateTime.Now;
+
                         entryData._entryDate = currentTime.ToShortDateString();
 
                         PromptGenerator prompt = new PromptGenerator();
+
                         string selectedPrompt = prompt.GetRandomPrompt();
+
                         entryData._promptText = selectedPrompt;
 
                         Console.WriteLine($"\nDate: {entryData._entryDate}\n{entryData._promptText}\n");
@@ -47,22 +53,27 @@ class Program
                         entryData._entryText = Console.ReadLine();
 
                         myJournal._entries.Add(entryData);
+
                         Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}");
+                        
                         break;
 
                     case 2:
 
                         myJournal.DisplayJournal();
+                        
                         break;
 
                     case 3:
 
                         myJournal.SaveToFile();
+                        
                         break;
 
                     case 4:
 
                         myJournal.LoadFromFile();
+                        
                         break;
                     
                     case 5:
@@ -70,16 +81,22 @@ class Program
                         Console.WriteLine("Goodbye.");
 
                         init = false;
+                        
                         break;
                     
                     default:
+
                         Console.WriteLine($"\nInvalid selection: Please choose a valid option.");
+                        
                         break;
+
                 }
             }
             catch (Exception inputError)
             {
+
                 Console.WriteLine($"\nInvalid selection: {inputError.Message}");
+                
             }
         }
     }
