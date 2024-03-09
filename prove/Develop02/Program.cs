@@ -1,4 +1,7 @@
-using System.IO;
+/* Exceeding requirements: 
+- Extra info save on the entry as _entryCode (Entry number).
+- Added try-catch statement to handle a faulty selection at the beggining.
+*/
 using ca1050;
 
 class Program
@@ -10,55 +13,70 @@ class Program
 
         bool init = true;
 
-        Console.WriteLine("Welcome to the Personal Journal Assitant V0.1\n");
+        Console.WriteLine("Welcome to the Personal Journal Assistant V0.1");
 
         while (init == true)
         {
-            
-            Console.Write("To proceed select the number one of the following options:\n1) New entry.\n2) Display entries.\n3) Save to a file.\n4) Load from a file\n5) exit the program.\nYour Selection: ");
-            string userSelection = Console.ReadLine();
-
-            switch (int.Parse(userSelection))
+            // challenge element added.
+            try
             {
-                case 1:
+            
+                Console.Write("\nTo proceed select the number one of the following options:\n1) New entry.\n2) Display entries.\n3) Save to a file.\n4) Load from a file\n5) exit the program.\nYour Selection: ");
+                string userSelection = Console.ReadLine();
 
-                    Entry entryData = new Entry();
+                switch (int.Parse(userSelection))
+                {
+                    case 1:
 
-                    DateTime currentTime = DateTime.Now;
-                    entryData._entryDate = currentTime.ToShortDateString();
+                        Entry entryData = new Entry();
 
-                    PromptGenerator prompt = new PromptGenerator();
-                    string selectedPrompt = prompt.GetRandomPrompt();
-                    entryData._promptText = selectedPrompt;
+                        entryData._entryCode = myJournal._entries.Count + 1;
 
-                    Console.WriteLine($"Date:{currentTime}\n{selectedPrompt}");
+                        DateTime currentTime = DateTime.Now;
+                        entryData._entryDate = currentTime.ToShortDateString();
 
-                    entryData._entryText = Console.ReadLine();
+                        PromptGenerator prompt = new PromptGenerator();
+                        string selectedPrompt = prompt.GetRandomPrompt();
+                        entryData._promptText = selectedPrompt;
 
-                    myJournal._entries.Add(entryData);
+                        Console.WriteLine($"\nDate: {entryData._entryDate}\n{entryData._promptText}\n");
 
-                    break;
+                        entryData._entryText = Console.ReadLine();
 
-                case 2:
+                        myJournal._entries.Add(entryData);
+                        Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}.\n");
+                        break;
 
-                    myJournal.DisplayJournal();
-                    break;
+                    case 2:
 
-                case 3:
+                        myJournal.DisplayJournal();
 
-                    break;
+                        break;
 
-                case 4:
+                    case 3:
 
-                    break;
-                
-                case 5:
+                        myJournal.SaveToFile();
 
-                    Console.WriteLine("Goodbye");
+                        break;
 
-                    init = false;
+                    case 4:
 
-                    break;
+                        myJournal.LoadFromFile();
+
+                        break;
+                    
+                    case 5:
+
+                        Console.WriteLine("Goodbye");
+
+                        init = false;
+
+                        break;
+                }
+            }
+            catch (Exception inputError)
+            {
+                Console.WriteLine($"\nInvalid selection: {inputError.Message}");
             }
         }
     }

@@ -22,12 +22,12 @@ namespace ca1050
 
         public void SaveToFile()
         {
-
+            
         }
 
         public void LoadFromFile()
         {
-
+            
         }
     }
 }
