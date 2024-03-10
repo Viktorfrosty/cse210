@@ -27,7 +27,7 @@ class Program
             try
             {
             
-                Console.Write("\nTo proceed select the number one of the following options:\n1) New entry.\n2) Display entries.\n3) Save to a file.\n4) Load from a file\n5) exit the program.\nYour Selection: ");
+                Console.Write("\nTo proceed select the number one of the following options:\n1) New entry.\n2) Display entries.\n3) Save to a CSV file.\n4) Load from a CSV file\n5) exit the program.\nYour Selection: ");
 
                 string userSelection = Console.ReadLine();
 
