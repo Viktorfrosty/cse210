@@ -39,7 +39,10 @@ namespace ca1050
 
         public void SaveToFile()
         {
-            string fileName = "myJournal.csv";
+
+            Console.Write("\nNote: Do not include the .csv\nSave as: ");
+
+            string fileName = Console.ReadLine()+".csv";
 
             using (StreamWriter outputFile = new StreamWriter(fileName))
             {
@@ -53,14 +56,16 @@ namespace ca1050
 
             }
             
-            Console.WriteLine($"\nJournal saved as {fileName}.");
+            Console.WriteLine($"\nJournal saved as {fileName}");
 
         }
 
         public void LoadFromFile()
         {
             
-            string fileName = "myJournal.csv";
+            Console.Write("\nWarning: This will erase your current Journal.\nNote: Do not include the .csv\nfile Name: ");
+
+            string fileName = Console.ReadLine()+".csv";
 
             if (File.Exists(fileName))
             {
@@ -88,7 +93,7 @@ namespace ca1050
 
                 }
 
-                Console.WriteLine($"\nJournal loaded from {fileName}.");
+                Console.WriteLine($"\nJournal loaded from {fileName}");
 
             }
 
@@ -100,7 +105,7 @@ namespace ca1050
             }
 
         }
-        
+
     }
 
 }

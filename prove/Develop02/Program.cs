@@ -23,7 +23,7 @@ class Program
         {
 
             // challenge element added.
-            
+
             try
             {
             
@@ -54,7 +54,7 @@ class Program
 
                         entryData._entryText = Console.ReadLine();
 
-                        myJournal._entries.Add(entryData);
+                        myJournal.AddEntry(entryData);
 
                         Console.WriteLine($"\nEntry saved as entry number: {entryData._entryCode}");
                         
