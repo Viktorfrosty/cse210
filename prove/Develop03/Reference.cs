@@ -1,4 +1,4 @@
-namespace Assingments
+namespace Assingment
 {
 
     public class Reference
@@ -15,12 +15,12 @@ namespace Assingments
         }
         public Reference(string book,int chapter,int startVerse,int endVerse)
         {
-
+            //
         }
 
         public string GetDisplayText()
         {
-
+            //
         }
 
     }

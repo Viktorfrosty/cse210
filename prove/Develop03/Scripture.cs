@@ -1,21 +1,23 @@
-namespace Assingments
+namespace Assingment
 {
 
     public class Scripture
     {
         
-        Reference _reference = Reference(); //¿?
+        private Reference _reference;
 
-        list<Word> _words = new list<Word>(); 
+        private List<Word> _words;
 
         public Scripture(Reference Reference, string text)
         {
-
+            
         }
 
         public void HideRandomWords(int NumberToHide)
         {
+            Word val = Word();
 
+            val.Hide();
         }
 
         public string GetDisplayText()
@@ -25,7 +27,7 @@ namespace Assingments
 
         public bool IsCompletlyHidden()
         {
-
+            if (  )
         }
     
     }
