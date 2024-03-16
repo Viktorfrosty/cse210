@@ -5,13 +5,13 @@ namespace Assingment
     {
 
         private string _text;
+
         private bool _isHidden;
 
         public Word(string text)
         {
 
             _text = text;
-            _isHidden = false;
 
         }
 
@@ -25,21 +25,27 @@ namespace Assingment
         public void Show()
         {
 
-            // looks like I am going to omit this...
+            _isHidden = false;
 
         }
 
         public bool IsHidden()
         {
-
+            
             return _isHidden;
 
         }
 
-        public string Display()
+        public string DisplayText()
         {
+            switch (_isHidden)
+            {
+            case true:
 
-            return _text;
+                return _text;
+            case false:
+                return _text;
+            }
 
         }
 
