@@ -35,7 +35,7 @@ namespace Assingment
 
         }
 
-        public string DisplayText()
+        public string GetDisplayText()
         {
 
             if (_endVerse == 0)

@@ -1,4 +1,9 @@
 /*
+Exceeding requirements:
+- Added a try and catch blocks to handle invalid inputs.
+- Added .ToLower() to the user selection to respond to upper case or lower case "quit" userSelection.
+- the program can hide diferent words from the words list, and it does not select the same word twice.
+- added a restart function to the user selection, it will show all the words again.
 */
 
 using System;
@@ -9,39 +14,60 @@ class Program
     static void Main(string[] args)
     {
 
-        Scripture selectedScripture = new Scripture(reference, "test test,test. Test.");
+        Scripture selectedScripture = new Scripture("test1 test2, test3. Test4.");
 
-        selectedScripture.DisplayText();
+        bool hiddenStatus = selectedScripture.IsCompletlyHidden();
 
-        Console.Write($"You must press the enter button to continue in the program or write 'quit' to exit the program.\nSelection: ");
+        Console.Clear();
 
-        while (true)
+        while (hiddenStatus == false)
         {
 
             try
             {
 
+                selectedScripture.DisplayText();
+
+                hiddenStatus = selectedScripture.IsCompletlyHidden();
+
+                Console.Write($"\nPress the enter button to continue in the program or write 'quit' to exit the program.\nSelection: ");
+
                 string userSelection = Console.ReadLine();
 
-                if (userSelection.ToLower() == "quit" /* || userSelection.ToLower() == "a" */)
+                if (userSelection.ToLower() == "quit")
                 {
 
-                    Console.Clear();
-                    Console.WriteLine("Goodbye.");
+                    Console.WriteLine($"\nGoodbye.");
+
                     break;
 
                 }
-                else if (userSelection.ToLower() == "")
+                else if (userSelection == "")
                 {
 
                     Console.Clear();
-                    Console.WriteLine($"Test");
+
+                    selectedScripture.HideRandomWords(2);
+
+                }
+                else if (userSelection.ToLower() == "restart")
+                {
+
+                    Console.Clear();
+
+                    selectedScripture.ShowAllWords();
+
+                    hiddenStatus = false;
 
                 }
                 else
                 {
 
-                    Console.Write($"\nInvalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\nSelection: ");
+                    hiddenStatus = false;
+
+                    Console.Clear();
+
+                    Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\n");
 
                 }
 
@@ -49,9 +75,20 @@ class Program
             catch (Exception)
             {
 
-                Console.Write($"\nInvalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\nSelection: ");
+                hiddenStatus = false;
+
+                Console.Clear();
+
+                Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\n");
 
             }
+
+        }
+
+        if (hiddenStatus == true)
+        {
+
+            Console.WriteLine("Goodbye.");
 
         }
 

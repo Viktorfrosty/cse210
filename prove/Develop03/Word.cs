@@ -36,15 +36,21 @@ namespace Assingment
 
         }
 
-        public string DisplayText()
+        public string GetDisplayText()
         {
-            switch (_isHidden)
+            switch(_isHidden)
             {
-            case true:
 
-                return _text;
-            case false:
-                return _text;
+                case true:
+
+                    string hiddenWord = "_";
+
+                    return hiddenWord;
+
+                case false:
+
+                    return $"{_text} ";
+
             }
 
         }
