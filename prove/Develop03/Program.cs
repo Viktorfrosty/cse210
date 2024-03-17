@@ -4,6 +4,7 @@ Exceeding requirements:
 - Added .ToLower() to the user selection to respond to upper case or lower case "quit" userSelection.
 - the program can hide diferent words from the words list, and it does not select the same word twice.
 - added a restart function to the user selection, it will show all the words again.
+- The program does not erase any dot or comma in the _text from words.
 */
 
 using System;
@@ -30,7 +31,7 @@ class Program
 
                 hiddenStatus = selectedScripture.IsCompletlyHidden();
 
-                Console.Write($"\nPress the enter button to continue in the program or write 'quit' to exit the program.\nSelection: ");
+                Console.Write($"\nPress the 'Enter' key to continue, write 'restart' to show all the words again or 'quit' to exit the program.\nSelection: ");
 
                 string userSelection = Console.ReadLine();
 
@@ -67,7 +68,7 @@ class Program
 
                     Console.Clear();
 
-                    Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\n");
+                    Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program, 'restart' to show all the words again, or just press the 'Enter' key to continue in the program.\n");
 
                 }
 
@@ -79,7 +80,7 @@ class Program
 
                 Console.Clear();
 
-                Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program or just press the enter button to continue in the program.\n");
+                Console.WriteLine($"Invalid selection: You must write 'quit' to exit the program, 'restart' to show all the words again, or just press the 'Enter' key to continue in the program.\n");
 
             }
 
@@ -88,7 +89,7 @@ class Program
         if (hiddenStatus == true)
         {
 
-            Console.WriteLine("Goodbye.");
+            Console.WriteLine("Good Work, goodbye.");
 
         }
 

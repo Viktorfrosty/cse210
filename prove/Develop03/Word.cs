@@ -43,9 +43,33 @@ namespace Assingment
 
                 case true:
 
-                    string hiddenWord = "_";
+                    string hiddenWord = "";
 
-                    return hiddenWord;
+                    foreach (char letter in _text)
+                    {
+                        
+                        if (letter == ',')
+                        {
+
+                            hiddenWord += ",";
+
+                        }
+                        else if (letter == '.')
+                        {
+
+                            hiddenWord += "."; 
+
+                        }
+                        else
+                        {
+
+                            hiddenWord += "_"; 
+
+                        }
+
+                    }
+
+                    return $"{hiddenWord} ";
 
                 case false:
 
