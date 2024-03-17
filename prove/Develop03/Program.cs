@@ -15,15 +15,15 @@ class Program
     static void Main(string[] args)
     {
 
-        string book = "test";
+        string book = "Alma";
 
-        int chapter = 0;
+        int chapter = 36;
 
-        int verse = 0;
+        int verse = 21;
 
         int endVerse = 1;
 
-        string text = "test1 test2, test3. Test4.";
+        string text = "Yea, I say unto you, my son, that there could be nothing so exquisite and so bitter as were my pains. Yea, and again I say unto you, my son, that on the other hand, there can be nothing so exquisite and sweet as was my joy.";
 
         Reference reference = new Reference(book,chapter,verse,endVerse);
 
@@ -43,7 +43,7 @@ class Program
 
                 hiddenStatus = selectedScripture.IsCompletlyHidden();
 
-                Console.Write($"\nPress the 'Enter' key to continue, write 'restart' to show all the words again or 'quit' to exit the program.\nSelection: ");
+                Console.Write($"\n\nPress the 'Enter' key to continue, write 'restart' to show all the words again or 'quit' to exit the program.\nSelection: ");
 
                 string userSelection = Console.ReadLine();
 

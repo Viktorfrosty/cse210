@@ -38,7 +38,7 @@ namespace Assingment
 
         public string GetDisplayText()
         {
-            
+
             switch(_isHidden)
             {
 

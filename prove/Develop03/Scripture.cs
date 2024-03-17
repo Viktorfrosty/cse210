@@ -83,7 +83,7 @@ namespace Assingment
         public void DisplayText()
         {
 
-            Console.WriteLine($"{_reference.GetDisplayText()}");
+            Console.WriteLine($"{_reference.GetDisplayText()}\n");
 
             foreach (Word wordElement in _words)
             {

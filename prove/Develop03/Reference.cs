@@ -4,13 +4,13 @@ namespace Assingment
     public class Reference
     {
         
-        private string _book = "";
+        private string _book;
 
-        private int _chapter = 0;
+        private int _chapter;
 
-        private int _verse = 0;
+        private int _verse;
 
-        private int _endVerse = 0;
+        private int _endVerse;
 
         public Reference(string book,int chapter,int verse)
         {
@@ -22,7 +22,7 @@ namespace Assingment
             _verse = verse;
 
         }
-        
+
         public Reference(string book,int chapter,int startVerse,int endVerse)
         {
 
@@ -39,16 +39,16 @@ namespace Assingment
         public string GetDisplayText()
         {
 
-            if (_endVerse == 0)
+            if (_endVerse == 0 || _verse == _endVerse || _endVerse < _verse)
             {
 
-                return $"{_book} {_chapter}:{_verse}";
+                return $"|{_book} {_chapter}:{_verse}|";
 
             }
             else
             {
 
-                return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+                return $"|{_book} {_chapter}:{_verse}-{_endVerse}|";
 
             }
 
