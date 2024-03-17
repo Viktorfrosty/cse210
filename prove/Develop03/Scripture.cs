@@ -4,11 +4,11 @@ namespace Assingment
     public class Scripture
     {
         
+        private int _hiddenWords = 0;
+        
         private Reference _reference = new Reference("test",1,1,1);
 
         private List<Word> _words = new List<Word>();
-
-        private int _hiddenWords = 0;
 
         public Scripture(string text)
         {
@@ -95,18 +95,21 @@ namespace Assingment
 
         public bool IsCompletlyHidden()
         {
+
             int statusSwitch = 0;
 
             bool status = false;
 
             foreach (Word wordElement in _words)
             {
+
                 if (wordElement.IsHidden() == false)
                 {
 
                     statusSwitch += 1;
 
                 }
+
             }
 
             if (statusSwitch != 0)
@@ -120,6 +123,7 @@ namespace Assingment
             {
 
                 status = true;
+
             }
 
             return status;

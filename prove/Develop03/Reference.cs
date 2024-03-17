@@ -22,6 +22,7 @@ namespace Assingment
             _verse = verse;
 
         }
+        
         public Reference(string book,int chapter,int startVerse,int endVerse)
         {
 

@@ -38,6 +38,7 @@ namespace Assingment
 
         public string GetDisplayText()
         {
+            
             switch(_isHidden)
             {
 
@@ -47,7 +48,7 @@ namespace Assingment
 
                     foreach (char letter in _text)
                     {
-                        
+
                         if (letter == ',')
                         {
 
