@@ -15,7 +15,19 @@ class Program
     static void Main(string[] args)
     {
 
-        Scripture selectedScripture = new Scripture("test1 test2, test3. Test4.");
+        string book = "test";
+
+        int chapter = 0;
+
+        int verse = 0;
+
+        int endVerse = 1;
+
+        string text = "test1 test2, test3. Test4.";
+
+        Reference reference = new Reference(book,chapter,verse,endVerse);
+
+        Scripture selectedScripture = new Scripture(reference,text);
 
         bool hiddenStatus = selectedScripture.IsCompletlyHidden();
 

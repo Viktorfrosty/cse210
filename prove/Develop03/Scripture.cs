@@ -5,13 +5,14 @@ namespace Assingment
     {
         
         private int _hiddenWords = 0;
-        
-        private Reference _reference = new Reference("test",1,1,1);
+
+        private Reference _reference;
 
         private List<Word> _words = new List<Word>();
 
-        public Scripture(string text)
+        public Scripture(Reference reference,string text)
         {
+            _reference = reference;
 
             string[] processedText = text.Split(" ");
             
