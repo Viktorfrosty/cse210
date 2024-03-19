@@ -8,10 +8,19 @@ namespace Assignments
 
         protected string _topic;
 
-        public void GetSummary()
+        public Assignment(string studentName, string topic)
+        {
+            
+            _studentName = studentName;
+
+            _topic = topic;
+
+        }
+
+        public string GetSummary()
         {
 
-            Console.WriteLine($"{_studentName} {_topic}");
+            return $"{_studentName} - {_topic}";
 
         }
 
