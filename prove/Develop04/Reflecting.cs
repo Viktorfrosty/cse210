@@ -4,12 +4,20 @@ namespace Mindfulness
     public class ReflectingActivity: Activity
     {
 
-        private List<string> _prompts;
+        private List<string> _prompts = new List<string>
+        {
+            "prompt test1",
+            "prompt test2"
+        };
 
-        private List<string> _Questions;
+        private List<string> _Questions = new List<string>
+        {
+            "question test1",
+            "question test2"
+        };
 
 
-        public ReflectingActivity()
+        public ReflectingActivity(string name, string description, int duration): base(name, description, duration)
         {
 
             //
