@@ -10,14 +10,12 @@ namespace Mindfulness
 
         protected int _duration;
 
-        public Activity(string name, string description, int duration)
+        public Activity(string name, string description)
         {
 
             _name = name;
 
             _description = description;
-
-            _duration = duration;
 
         }
 
@@ -27,7 +25,7 @@ namespace Mindfulness
             Console.Clear();
 
             Console.Write($"Welcome to the {_name} Activity!\n\n{_description}\n\nHow long (in seconds) would you like to be this session: ");
-            
+
 
 
         }
@@ -35,7 +33,7 @@ namespace Mindfulness
         public void DisplayEndingMessage()
         {
 
-            Console.WriteLine("Well Done.");
+            Console.WriteLine($"Well Done!\nYou completed {_duration} seconds of {_name} Activity.");
 
         }
 

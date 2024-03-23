@@ -17,7 +17,7 @@ namespace Mindfulness
         };
 
 
-        public ReflectingActivity(string name, string description, int duration): base(name, description, duration)
+        public ReflectingActivity(string name, string description): base(name, description)
         {
 
             //

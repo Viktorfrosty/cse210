@@ -6,6 +6,8 @@ namespace Mindfulness
 
         private int _count;
 
+        private List<string> _userList = new List<string>{};
+
         private List<string> _prompts = new List<string>
         {
             "listing test1",
@@ -13,7 +15,7 @@ namespace Mindfulness
             "listing test3"
         };
 
-        public ListingActivity(string name, string description, int duration, int count): base(name, description, duration)
+        public ListingActivity(string name, string description, int count): base(name, description)
         {
 
             //
@@ -29,16 +31,20 @@ namespace Mindfulness
 
         public void GetRandomPrompt()
         {
-            
-            //
+
+            Random random = new Random();
+
+            int randomIndex = random.Next(0,_prompts.Count());
+
+            Console.WriteLine(_prompts[randomIndex]);
 
         }
 
         public List<string> GetListFromUser()
         {
 
-            //
-            
+            return 
+
         }
         
     }
