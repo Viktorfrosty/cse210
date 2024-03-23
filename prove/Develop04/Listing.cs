@@ -6,8 +6,6 @@ namespace Mindfulness
 
         private int _count;
 
-        private List<string> _userList = new List<string>{};
-
         private List<string> _prompts = new List<string>
         {
             "listing test1",
@@ -25,11 +23,15 @@ namespace Mindfulness
         public void Run()
         {
             
-            //
+            GetRandomPrompt();
+
+            List<string> list = GetListFromUser();
+
+            _count = list.Count();
 
         }
 
-        public void GetRandomPrompt()
+        private void GetRandomPrompt()
         {
 
             Random random = new Random();
@@ -40,10 +42,19 @@ namespace Mindfulness
 
         }
 
-        public List<string> GetListFromUser()
+        private List<string> GetListFromUser()
         {
 
-            return 
+            List<string> userList = new List<string>{};
+
+            bool getList = true;
+
+            while (getList == true)
+            {
+
+            }
+
+            return userList;
 
         }
         

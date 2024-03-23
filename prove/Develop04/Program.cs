@@ -62,6 +62,10 @@ class Program
 
                         ListingActivity listingActivity = new ListingActivity("Listing","This activity will help you reflect on the good things in your life by having you list as many things as you can inh a certain area.", count);
 
+                        listingActivity.DisplayStartingMessage();
+
+                        listingActivity.Run();
+
                         break;
 
                     default:
