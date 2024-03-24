@@ -1,7 +1,7 @@
 /*
 Exceeding Requirements:
 - Added a try and cath block to handle invalid inputs.
--
+- Added a way to select different questions during the reflection activity. Unfortunately, I had to add a list.Clear() method that practically broke the loop of this method to avoid duplicates. However, it only activates if the program is at the brink of creating an infinite loop during the search for unused indexes.
 */
 
 using System;

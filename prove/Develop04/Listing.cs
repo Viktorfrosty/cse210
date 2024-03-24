@@ -8,7 +8,7 @@ namespace Mindfulness
 
         private List<string> _prompts = new List<string>
         {
-            "listing test1",
+            "when you have felt the Holy Ghost this week",
             "listing test2",
             "listing test3"
         };

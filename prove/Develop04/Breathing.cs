@@ -7,7 +7,7 @@ namespace Mindfulness
         public BreathingActivity(string name, string description): base(name, description)
         {
 
-            //
+            // no modifications.
 
         }
 
