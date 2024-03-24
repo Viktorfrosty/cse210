@@ -29,7 +29,7 @@ namespace Mindfulness
 
                 Console.Write("Breathe out: ");
 
-                ShowCountDown(10);
+                ShowCountDown(5);
 
                 Console.WriteLine("");
 
