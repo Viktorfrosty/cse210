@@ -14,7 +14,26 @@ namespace Mindfulness
         public void Run()
         {
             
-            //
+            DateTime startTime = DateTime.Now;
+
+            DateTime futureTime = startTime.AddSeconds(_duration);
+
+            while (DateTime.Now < futureTime)
+            {
+
+                Console.Write("breathe in: ");
+
+                ShowCountDown(5);
+
+                Console.WriteLine("");
+
+                Console.Write("Breathe out: ");
+
+                ShowCountDown(10);
+
+                Console.WriteLine("");
+
+            }
 
         }
         

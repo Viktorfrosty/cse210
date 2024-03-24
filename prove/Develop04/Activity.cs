@@ -26,14 +26,24 @@ namespace Mindfulness
 
             Console.Write($"Welcome to the {_name} Activity!\n\n{_description}\n\nHow long (in seconds) would you like to be this session: ");
 
+            _duration = int.Parse(Console.ReadLine());
 
+            Console.Clear();
+            
+            Console.Write("Get ready.");
+
+            ShowSpinner(5);
+
+            Console.Clear();
 
         }
 
         public void DisplayEndingMessage()
         {
 
-            Console.WriteLine($"Well Done!\nYou completed {_duration} seconds of {_name} Activity.");
+            Console.Clear();
+
+            Console.WriteLine($"Well Done!\nYou completed {_duration} seconds of {_name} Activity.\n");
 
         }
 
@@ -49,8 +59,6 @@ namespace Mindfulness
 
             DateTime futureTime = startTime.AddSeconds(seconds);
 
-            Console.WriteLine("");//remove.
-
             while (DateTime.Now < futureTime)
             {
 
@@ -60,7 +68,7 @@ namespace Mindfulness
 
                 Console.Write("\b \b");
 
-                index += 1;
+                index++;
 
                 if (index >= spinner.Count())
                 {
@@ -76,8 +84,6 @@ namespace Mindfulness
         public void ShowCountDown(int seconds)
         {
 
-            Console.WriteLine("");// remove
-
             for (int countdown = seconds; countdown > 0; countdown--)
             {
 
@@ -85,7 +91,19 @@ namespace Mindfulness
 
                 Thread.Sleep(1000);
 
-                Console.Write("\b \b");
+                if (countdown.ToString().Length == 1)
+                {
+
+                    Console.Write("\b \b");
+                
+                }
+
+                else if (countdown.ToString().Length == 2)
+                {
+
+                    Console.Write("\b\b  \b\b");
+                
+                }
 
             }
 

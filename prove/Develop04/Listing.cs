@@ -16,13 +16,13 @@ namespace Mindfulness
         public ListingActivity(string name, string description, int count): base(name, description)
         {
 
-            //
+            _count = count;
 
         }
         
         public void Run()
         {
-            
+
             GetRandomPrompt();
 
             List<string> list = GetListFromUser();
@@ -36,7 +36,7 @@ namespace Mindfulness
 
             Random random = new Random();
 
-            int randomIndex = random.Next(0,_prompts.Count());
+            int randomIndex = random.Next(0, _prompts.Count());
 
             Console.WriteLine(_prompts[randomIndex]);
 
@@ -45,12 +45,29 @@ namespace Mindfulness
         private List<string> GetListFromUser()
         {
 
-            List<string> userList = new List<string>{};
+            List<string> userList = new List<string> {};
 
             bool getList = true;
 
             while (getList == true)
             {
+
+                string userInput = Console.ReadLine();
+
+                if (userInput.ToLower() != "finished")
+                {
+
+                    userList.Add(userInput);
+
+                    _count++;
+
+                }
+                else
+                {
+
+                    getList = false;
+
+                }
 
             }
 

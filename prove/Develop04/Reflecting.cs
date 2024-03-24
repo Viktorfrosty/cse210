@@ -10,7 +10,7 @@ namespace Mindfulness
             "prompt test2"
         };
 
-        private List<string> _Questions = new List<string>
+        private List<string> _questions = new List<string>
         {
             "question test1",
             "question test2"
@@ -27,39 +27,47 @@ namespace Mindfulness
         public void Run()
         {
             
-            //
+            DisplayPrompt();
+
+            Console.WriteLine("Considering the next prompt:");
+
+            DisplayQuestion();
 
         }
 
         public string GetRandomPrompt()
         {
 
-            string prompt = "test";
+            Random random = new Random();
 
-            return prompt;
+            int randomIndex = random.Next(0, _prompts.Count());
+
+            return _prompts[randomIndex];
 
         }
 
         public string GetRandomQuestion()
         {
 
-            string question = "test";
+            Random random = new Random();
 
-            return question;
+            int randomIndex = random.Next(0, _questions.Count());
+
+            return _questions[randomIndex];
 
         }
 
         public void DisplayPrompt()
         {
             
-            //
+            Console.WriteLine(GetRandomPrompt());
 
         }
 
         public void DisplayQuestion()
         {
             
-            //
+            Console.WriteLine(GetRandomQuestion());
 
         }
         
