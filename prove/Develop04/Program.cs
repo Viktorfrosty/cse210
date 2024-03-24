@@ -74,9 +74,7 @@ class Program
 
                         Console.Clear();
 
-                        int count = 0;
-
-                        ListingActivity listingActivity = new ListingActivity("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", count);
+                        ListingActivity listingActivity = new ListingActivity("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
 
                         listingActivity.DisplayStartingMessage();
 

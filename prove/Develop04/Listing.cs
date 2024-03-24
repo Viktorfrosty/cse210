@@ -8,15 +8,17 @@ namespace Mindfulness
 
         private List<string> _prompts = new List<string>
         {
-            "when you have felt the Holy Ghost this week",
-            "listing test2",
-            "listing test3"
+
+            "when you have felt the Holy Ghost this week?",
+            "What did you learn in your personal and companionship study this week?",
+            "How have the Savior and His work blessed your life?"
+
         };
 
-        public ListingActivity(string name, string description, int count): base(name, description)
+        public ListingActivity(string name, string description): base(name, description)
         {
 
-            _count = count;
+            //
 
         }
         
@@ -27,7 +29,7 @@ namespace Mindfulness
 
             List<string> list = GetListFromUser();
 
-            _count = list.Count();
+            EntriesCount(list);   
 
         }
 
@@ -47,31 +49,40 @@ namespace Mindfulness
 
             List<string> userList = new List<string> {};
 
-            bool getList = true;
+            Console.Write("\nWrite everything that comes into your mind before the time's over.\nYou may begin in: ");
 
-            while (getList == true)
+            ShowCountDown(5);
+
+            Console.WriteLine("");
+
+            DateTime startTime = DateTime.Now;
+
+            DateTime futureTime = startTime.AddSeconds(_duration);
+
+            while (DateTime.Now < futureTime)
             {
 
+                Console.Write("> ");
                 string userInput = Console.ReadLine();
 
-                if (userInput.ToLower() != "finished")
-                {
+                userList.Add(userInput);
 
-                    userList.Add(userInput);
-
-                    _count++;
-
-                }
-                else
-                {
-
-                    getList = false;
-
-                }
+                _count++;
 
             }
 
             return userList;
+
+        }
+
+        private void EntriesCount(List<string> userList)
+        {
+
+            _count = userList.Count();
+
+            Console.WriteLine($"You wrote {_count} entries. Press 'Enter' Button to continue.");
+
+            Console.ReadLine();
 
         }
         

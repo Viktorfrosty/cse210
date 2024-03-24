@@ -47,7 +47,7 @@ namespace Mindfulness
 
         }
 
-        public void ShowSpinner(int seconds)
+        protected void ShowSpinner(int seconds)
         {
 
             List<string> spinner = new List<string>()
@@ -81,7 +81,7 @@ namespace Mindfulness
             
         }
 
-        public void ShowCountDown(int seconds)
+        protected void ShowCountDown(int seconds)
         {
 
             for (int countdown = seconds; countdown > 0; countdown--)
