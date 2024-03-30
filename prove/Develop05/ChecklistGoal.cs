@@ -1,6 +1,6 @@
 namespace QuestSystem
 {
-
+/*
     public class ChecklistGoal: Goal
     {
 
@@ -38,7 +38,7 @@ namespace QuestSystem
         {
             //
         }
-        
+       
     }
-
+*/
 }

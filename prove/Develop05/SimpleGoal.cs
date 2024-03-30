@@ -1,6 +1,6 @@
 namespace QuestSystem
 {
-
+/*
     public class SimpleGoal: Goal
     {
 
@@ -23,9 +23,9 @@ namespace QuestSystem
 
         public override bool IsCompleted()
         {
-            //
+            return _isComplete;
         }
         
     }
-
+*/
 }

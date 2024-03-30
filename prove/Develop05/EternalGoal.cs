@@ -1,6 +1,6 @@
 namespace QuestSystem
 {
-
+/*
     public class EternalGoal: Goal
     {
 
@@ -21,9 +21,9 @@ namespace QuestSystem
 
         public override bool IsCompleted()
         {
-            //
+            return false;
         }
         
     }
-
+*/
 }
