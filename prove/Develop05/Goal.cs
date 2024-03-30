@@ -23,13 +23,13 @@ namespace QuestSystem
         
         public string GetDetailString()
         {
-            return  $"[ ] {_shortName} ({_description})";
+            return $"[ ] {_shortName} ({_description})";
         }
 
         public virtual string GetStringRepresentation()
         {
 
-            return $"{_shortName} {_description} {_points}";
+            return $"testGoal¦{_shortName}¦{_description}¦{_points}";
 
         }
 
@@ -40,7 +40,9 @@ namespace QuestSystem
 
         public virtual bool IsCompleted()
         {
+
             return false;
+            
         }
 
     }

@@ -21,7 +21,7 @@ namespace QuestSystem
         {
             bool running = true;
 
-            Console.WriteLine("EternalQuest.\n");
+            Console.WriteLine("\nEternalQuest.");
 
             while(running == true)
             {
@@ -174,7 +174,7 @@ namespace QuestSystem
 
                         case 1:
 
-                            Console.WriteLine("\nCreateGoal Test .1"); // remove!
+                            Console.WriteLine("\nCreateGoal Test 1."); // remove!
 
                             createGoal = false;
 
@@ -239,45 +239,50 @@ namespace QuestSystem
         private void EraseGoal() // Exceding the requirements.
         {
 
-            while (true)
+            ListGoalDetails();
+
+            if (_goals.Count()>0)
             {
-                try
+
+                while (true)
                 {
-
-                    ListGoalDetails();
-
-                    Console.Write("\nSelect the goal you are going to erase from the list (Select 0 to return to the main menu)\nSelection: ");
-
-                    int userSelection = int.Parse(Console.ReadLine()) - 1;
-
-                    if (userSelection == -1)
+                    try
                     {
 
-                        break;
+                        Console.Write("\nSelect the goal you are going to erase from the list (Select 0 to return to the main menu)\nSelection: ");
 
+                        int userSelection = int.Parse(Console.ReadLine()) - 1;
+
+                        if (userSelection == -1)
+                        {
+
+                            break;
+
+                        }
+                        else if (_goals.Count() > userSelection && _goals[userSelection] != null)
+                        {
+
+                            _goals.RemoveAt(userSelection);
+
+                            Console.WriteLine("\nGoal removed from the list.");
+
+                            break;
+
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
+
+                        }
                     }
-                    else if (_goals.Count() > userSelection && _goals[userSelection] != null)
+                    catch (Exception)
                     {
-
-                        _goals.RemoveAt(userSelection);
-
-                        Console.WriteLine("\nGoal removed from the list.");
-
-                        break;
-
-                    }
-                    else
-                    {
-
+                        
                         Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
-
+                        
                     }
-                }
-                catch (Exception)
-                {
-                    
-                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
-                    
+
                 }
 
             }
@@ -291,12 +296,60 @@ namespace QuestSystem
 
         private void SaveGoals()
         {
-            //
+
+            ListGoalDetails();
+
+            if (_goals.Count()>0)
+            {
+
+                Console.Write("\nSave the list on a txt file.\n(Do not add the .txt at the end of the file name)\nFile name: ");
+
+                string fileName = Console.ReadLine()+".txt";
+
+                using (StreamWriter outputFile = new StreamWriter(fileName))
+                {
+
+                    outputFile.WriteLine(_score);
+
+                    foreach (Goal goal in _goals)
+                    {
+
+                        outputFile.WriteLine(goal.GetStringRepresentation());
+
+                    }
+                    
+                }
+
+                Console.WriteLine("\nFile saved.");
+
+            }
+
         }
 
         private void LoadGoals()
         {
-            //
+
+            Console.Write("\Load the goal list from a txt file.\n(Do not add the .txt at the end of the file name)\nFile name: ");
+
+            string fileName = Console.ReadLine()+".txt";
+
+            string[] lines = System.IO.File.ReadAllLines(filename);
+
+            foreach (string line in lines)
+            {
+
+                string[] parts = line.Split("¦");
+
+                string goalType = parts[0];
+
+                string shortName = parts[1];
+
+                string description = parts[2];
+
+                string points = parts[3];
+
+            }
+
         }
 
     }
