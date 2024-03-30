@@ -40,13 +40,13 @@ namespace QuestSystem
                         
                         default:
 
-                            Console.WriteLine("Invalid option: selected option is not in the list.\nSelect a valid option from the list.\n");
+                            Console.WriteLine("\nInvalid option: selected option is not in the list.\nSelect a valid option from the list.");
 
                             break;
 
                         case 0:
 
-                            Console.WriteLine("Goodbye.");
+                            Console.WriteLine("\nGoodbye.\n");
 
                             running = false;
 
@@ -94,9 +94,7 @@ namespace QuestSystem
                 catch (Exception) // Exceding the requirements.
                 {
 
-                    Console.Clear();
-
-                    Console.WriteLine("Invalid input: Selected option is not a number.\nSelect a valid option from the list.\n");
+                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
 
                 }
             }
@@ -106,7 +104,7 @@ namespace QuestSystem
         private void DisplayPlayerInfo()
         {
             
-            Console.WriteLine($"Your score is: {_score}\n");
+            Console.WriteLine($"\nYour score is: {_score}\n");
 
         }
 
@@ -118,25 +116,29 @@ namespace QuestSystem
         private void ListGoalDetails()
         {
 
+            int listNumber = 0;
+
             if (_goals.Count() == 0)
             {
 
-                Console.WriteLine("No goals listed");
+                Console.WriteLine("\nNo goals listed.");
 
             }
             else
             {
 
-                Console.WriteLine("Goals: ");
+                Console.WriteLine("\nGoals: ");
                 
                 foreach (Goal goal in _goals)
                 {
-                    Console.WriteLine($"  {goal.GetDetailString()}");
+
+                    listNumber++;
+
+                    Console.WriteLine($"  {listNumber}. {goal.GetDetailString()}");
+
                 }
 
             }
-
-            Console.WriteLine("");
 
         }
 
@@ -160,7 +162,7 @@ namespace QuestSystem
 
                         default:
 
-                            Console.WriteLine("Invalid option: selected option is not in the list.\nSelect a valid option from the list.");
+                            Console.WriteLine("\nInvalid option: selected option is not in the list.\nSelect a valid option from the list.");
 
                             break;
                         
@@ -172,7 +174,7 @@ namespace QuestSystem
 
                         case 1:
 
-                            Console.WriteLine("CreateGoal Test 1\n"); // remove!
+                            Console.WriteLine("\nCreateGoal Test .1"); // remove!
 
                             createGoal = false;
 
@@ -180,7 +182,7 @@ namespace QuestSystem
 
                         case 2:
 
-                            Console.WriteLine("CreateGoal Test 2\n"); // remove!
+                            Console.WriteLine("\nCreateGoal Test 2."); // remove!
 
                             createGoal = false;
 
@@ -188,7 +190,7 @@ namespace QuestSystem
 
                         case 3:
 
-                            Console.WriteLine("CreateGoal Test 3\n"); // remove!
+                            Console.WriteLine("\nCreateGoal Test 3."); // remove!
 
                             createGoal = false;
 
@@ -196,7 +198,7 @@ namespace QuestSystem
 
                         case 4: // remove!
 
-                            Console.WriteLine("CreateGoal Test 4\n"); // remove!
+                            Console.WriteLine("\nCreateGoal Test 4."); // remove!
 
                             Console.Write("Name of the goal:");
                             
@@ -226,9 +228,7 @@ namespace QuestSystem
                 catch (Exception) // Exceding the requirements.
                 {
 
-                    Console.Clear();
-
-                    Console.WriteLine("Invalid input: Selected option is not a number.\nSelect a valid option from the list.");
+                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.*");
 
                 }
 
@@ -238,7 +238,50 @@ namespace QuestSystem
 
         private void EraseGoal() // Exceding the requirements.
         {
-            //
+
+            while (true)
+            {
+                try
+                {
+
+                    ListGoalDetails();
+
+                    Console.Write("\nSelect the goal you are going to erase from the list (Select 0 to return to the main menu)\nSelection: ");
+
+                    int userSelection = int.Parse(Console.ReadLine()) - 1;
+
+                    if (userSelection == -1)
+                    {
+
+                        break;
+
+                    }
+                    else if (_goals.Count() > userSelection && _goals[userSelection] != null)
+                    {
+
+                        _goals.RemoveAt(userSelection);
+
+                        Console.WriteLine("\nGoal removed from the list.");
+
+                        break;
+
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
+
+                    }
+                }
+                catch (Exception)
+                {
+                    
+                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
+                    
+                }
+
+            }
+
         }
 
         private void RecordEvent()
