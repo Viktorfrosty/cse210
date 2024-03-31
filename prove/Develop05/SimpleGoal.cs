@@ -23,6 +23,8 @@ namespace QuestSystem
         public override int RecordEvent()
         {
 
+            Console.WriteLine($"\nCongratulations! you completed your objective.\nYou earned {_points} points.");
+
             _isComplete = true;
 
             return _points;
@@ -31,7 +33,9 @@ namespace QuestSystem
 
         public override bool IsCompleted()
         {
+
             return _isComplete;
+            
         }
         
     }

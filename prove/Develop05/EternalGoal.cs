@@ -6,7 +6,9 @@ namespace QuestSystem
 
         public EternalGoal(string name, string description, int points): base(name, description, points)
         {
+
             // No change
+
         }
 
         public override string GetStringRepresentation()
@@ -19,13 +21,17 @@ namespace QuestSystem
         public override int RecordEvent()
         {
 
+            Console.WriteLine($"\nCongratulations! You earned {_points} points.");
+
             return _points;
 
         }
 
         public override bool IsCompleted()
         {
+
             return false;
+            
         }
         
     }

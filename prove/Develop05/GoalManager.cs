@@ -97,6 +97,7 @@ namespace QuestSystem
                     Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
 
                 }
+
             }
             
         }
@@ -234,7 +235,7 @@ namespace QuestSystem
 
                             Console.Write("\nPoints value of the goal:");
 
-                                bool result = int.TryParse(Console.ReadLine(), out number);
+                                bool result = int.TryParse(Console.ReadLine(), out number); // Exceding the requirements.
 
                                 if (result == true && number >= 1)
                                 {
@@ -283,7 +284,7 @@ namespace QuestSystem
 
                             Console.Write("\nPoints value of the goal:");
 
-                                bool result = int.TryParse(Console.ReadLine(), out number);
+                                bool result = int.TryParse(Console.ReadLine(), out number); // Exceding the requirements.
 
                                 if (result == true && number >= 1)
                                 {
@@ -332,7 +333,7 @@ namespace QuestSystem
 
                             Console.Write("\nPoints value of the goal:");
 
-                                bool result = int.TryParse(Console.ReadLine(), out number);
+                                bool result = int.TryParse(Console.ReadLine(), out number); // Exceding the requirements.
 
                                 if (result == true && number >= 1)
                                 {
@@ -356,7 +357,7 @@ namespace QuestSystem
 
                                 Console.Write("\nHow many times this goal needs to be acomplished to earn a bonus:");
 
-                                bool result = int.TryParse(Console.ReadLine(), out number);
+                                bool result = int.TryParse(Console.ReadLine(), out number); // Exceding the requirements.
 
                                 if (result == true && number >= 1)
                                 {
@@ -380,7 +381,7 @@ namespace QuestSystem
 
                                 Console.Write("\nBonus value of the goal:");
 
-                                bool result = int.TryParse(Console.ReadLine(), out number);
+                                bool result = int.TryParse(Console.ReadLine(), out number); // Exceding the requirements.
 
                                 if (result == true && number >= 1)
                                 {
@@ -433,6 +434,7 @@ namespace QuestSystem
 
                 while (true)
                 {
+                    
                     try // Exceding the requirements.
                     {
 
@@ -594,6 +596,7 @@ namespace QuestSystem
 
                             using (StreamReader reader = new StreamReader(fileName))
                             {
+                                
                                 string firstLine = reader.ReadLine();
 
                                 _score = int.Parse(firstLine);

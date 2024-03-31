@@ -41,12 +41,16 @@ namespace QuestSystem
             if (_target == _amountCompleted)
             {
 
+                Console.WriteLine($"\nCongratulations! you completed your objective.\nYou earned {_points} points and {_bonus} points.");
+
                 return _points + _bonus;
  
             }
             else
             {
 
+                Console.WriteLine($"\nCongratulations! You earned {_points} points.");
+                
                 return _points;
 
             }

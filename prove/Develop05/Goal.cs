@@ -38,6 +38,8 @@ namespace QuestSystem
         public virtual int RecordEvent()
         {
 
+            Console.WriteLine($"\nCongratulations! You earned {_points} points.");
+
             return _points;
 
         }
