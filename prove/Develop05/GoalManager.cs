@@ -31,7 +31,7 @@ namespace QuestSystem
 
                     DisplayPlayerInfo();
 
-                    Console.Write($"Menu Options:\n  1. List all goals.\n  2. Create new goal.\n  3. Erase a goal.\n  4. Save goals.\n  5. Load goals.\n  6. Record an event.\n  0. Exit the program.\n\nSelection: ");
+                    Console.Write($"Menu Options:\n  1. List all the goals.\n  2. Create a new goal.\n  3. Erase a goal.\n  4. Save the goals into a txt file.\n  5. Load goals from a txt file.\n  6. Record an event.\n  0. Exit the program.\n\nSelection: ");
 
                     int userSelection = int.Parse(Console.ReadLine());
 
@@ -126,7 +126,7 @@ namespace QuestSystem
                 
                 foreach (Goal goal in _goals)
                 {
-
+                    
                     listNumber++;
 
                     Console.WriteLine($"  {listNumber}. {goal.GetName()}");
@@ -588,6 +588,8 @@ namespace QuestSystem
                         if (File.Exists(fileName))
                         {
 
+                            _score = 0;
+
                             _goals.Clear();
 
                             using (StreamReader reader = new StreamReader(fileName))
@@ -611,24 +613,57 @@ namespace QuestSystem
 
                                     int points = int.Parse(parts[3]);
 
-                                    switch (goalType)
+                                    switch (goalType.ToLower())
                                     {
                                         
-                                        case "testGoal":
+                                        case "simple":
 
-                                            Goal goal = new Goal(shortName, description, points);
+                                            bool isCompleted = false;
 
-                                            _goals.Add(goal);
+                                            string isCompletedString = parts[4];
+                                        
+                                            if (isCompletedString.ToLower() == "true")
+                                            {
+
+                                                isCompleted = true;
+
+                                            }
+
+                                            SimpleGoal simpleGoal = new SimpleGoal(shortName, description, points, isCompleted);
+
+                                            _goals.Add(simpleGoal);
+
+                                            break;
+                                                                                
+                                        case "eternal":
+
+                                            EternalGoal eternalGoal = new EternalGoal(shortName, description, points);
+
+                                            _goals.Add(eternalGoal);
+
+                                            break;
+
+                                        case "checklist":
+
+                                            int target = int.Parse(parts[4]);
+
+                                            int bonus = int.Parse(parts[5]);
+
+                                            int amountCompleted = int.Parse(parts[6]);
+
+                                            ChecklistGoal checklistGoal = new ChecklistGoal(shortName, description, points, target, bonus, amountCompleted);
+
+                                            _goals.Add(checklistGoal);
 
                                             break;
 
                                     }
 
-                                    Console.WriteLine("\nGoal list loaded.");
-
                                 }
 
                             }
+
+                            Console.WriteLine("\nGoal list loaded.");
 
                             running = false;
                             

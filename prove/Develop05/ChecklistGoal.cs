@@ -24,13 +24,13 @@ namespace QuestSystem
         public override string GetDetailString()
         {
 
-            return $"{_shortName} ({_description}) -- currently completed: {_amountCompleted}";
+            return $"{_shortName} ({_description}) -- objective: {_target} times / currently completed: {_amountCompleted} times.";
 
         }
 
         public override string GetStringRepresentation()
         {
-            return $"ChecklistGoal¦{_shortName}¦{_description}¦{_points}¦{_target}¦{_bonus}¦{_amountCompleted}";
+            return $"checklist¦{_shortName}¦{_description}¦{_points}¦{_target}¦{_bonus}¦{_amountCompleted}";
         }
 
         public override int RecordEvent()

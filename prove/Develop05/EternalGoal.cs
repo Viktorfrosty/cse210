@@ -12,7 +12,7 @@ namespace QuestSystem
         public override string GetStringRepresentation()
         {
 
-            return $"EternalGoal¦{_shortName}¦{_description}¦{_points}";
+            return $"eternal¦{_shortName}¦{_description}¦{_points}";
 
         }
 

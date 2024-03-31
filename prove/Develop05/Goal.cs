@@ -31,7 +31,7 @@ namespace QuestSystem
         public virtual string GetStringRepresentation()
         {
 
-            return $"testGoal¦{_shortName}¦{_description}¦{_points}";
+            return $"goal¦{_shortName}¦{_description}¦{_points}";
 
         }
 

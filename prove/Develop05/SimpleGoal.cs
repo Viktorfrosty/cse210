@@ -16,7 +16,7 @@ namespace QuestSystem
         public override string GetStringRepresentation()
         {
 
-            return $"SimpleGoal¦{_shortName}¦{_description}¦{_points}¦{_isComplete}";
+            return $"simple¦{_shortName}¦{_description}¦{_points}¦{_isComplete}";
 
         }
 
