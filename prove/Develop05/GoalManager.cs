@@ -110,7 +110,31 @@ namespace QuestSystem
 
         private void ListGoalNames()
         {
-            //
+
+            int listNumber = 0;
+
+            if (_goals.Count() == 0)
+            {
+
+                Console.WriteLine("\nNo goals listed.");
+
+            }
+            else
+            {
+
+                Console.WriteLine("\nGoals: ");
+                
+                foreach (Goal goal in _goals)
+                {
+
+                    listNumber++;
+
+                    Console.WriteLine($"  {listNumber}. {goal.GetName()}");
+
+                }
+
+            }
+
         }
 
         private void ListGoalDetails()
@@ -134,7 +158,16 @@ namespace QuestSystem
 
                     listNumber++;
 
-                    Console.WriteLine($"  {listNumber}. {goal.GetDetailString()}");
+                    string mark = "[ ]";
+
+                    if (goal.IsCompleted() != false)
+                    {
+        
+                        mark = "[x]";
+
+                    }
+
+                    Console.WriteLine($"  {listNumber}. {mark} {goal.GetDetailString()}");
 
                 }
 
@@ -145,13 +178,25 @@ namespace QuestSystem
         private void CreateGoal()
         {
 
-            bool createGoal = true;
+            bool running = true;
 
-            while (createGoal == true)
+            while (running == true)
             {
 
                 try // Exceding the requirements.
                 {
+
+                    string name;
+
+                    string description;
+
+                    int points;
+
+                    int number;
+
+                    int target;
+
+                    int bonus;
                 
                     Console.Write("\nThe type of goals are:\n  1. Simple.\n  2. Eternal.\n  3. Checklist.\n\nWhich type of goal are you going to create? (Insert 0 to return to the main menu.)\nSelection: ");
                     
@@ -168,55 +213,197 @@ namespace QuestSystem
                         
                         case 0:
 
-                            createGoal = false;
+                            running = false;
 
                             break;
 
                         case 1:
 
-                            Console.WriteLine("\nCreateGoal Test 1."); // remove!
+                            Console.WriteLine("\nSimple Goal.");
 
-                            createGoal = false;
+                            Console.Write("\nName of the goal:");
+                            
+                            name = Console.ReadLine();
+
+                            Console.Write("\nDescription of the goal:");
+                            
+                            description = Console.ReadLine();
+
+                            while (true)
+                            {
+
+                            Console.Write("\nPoints value of the goal:");
+
+                                bool result = int.TryParse(Console.ReadLine(), out number);
+
+                                if (result == true && number >= 1)
+                                {
+
+                                    points = number;
+                                    
+                                    break;
+
+                                }
+                                else
+                                {
+
+                                    Console.WriteLine("\nInvalid input: Insert a positive number.");
+
+                                }
+                                
+                            }
+
+                            SimpleGoal simpleGoal = new SimpleGoal(name, description, points, false);
+
+                            _goals.Add(simpleGoal);
+
+                            running = false;
+
+                            Console.WriteLine($"\nThe {name} goal has been created and added to the list successfully.");
+
+                            running = false;
 
                             break;
 
                         case 2:
 
-                            Console.WriteLine("\nCreateGoal Test 2."); // remove!
 
-                            createGoal = false;
+                            Console.WriteLine("\nEternal Goal.");
+
+                            Console.Write("\nName of the goal:");
+                            
+                            name = Console.ReadLine();
+
+                            Console.Write("\nDescription of the goal:");
+                            
+                            description = Console.ReadLine();
+
+                            while (true)
+                            {
+
+                            Console.Write("\nPoints value of the goal:");
+
+                                bool result = int.TryParse(Console.ReadLine(), out number);
+
+                                if (result == true && number >= 1)
+                                {
+
+                                    points = number;
+                                    
+                                    break;
+
+                                }
+                                else
+                                {
+
+                                    Console.WriteLine("\nInvalid input: Insert a positive number.");
+
+                                }
+                                
+                            }
+
+                            EternalGoal eternalGoal = new EternalGoal(name, description, points);
+
+                            _goals.Add(eternalGoal);
+
+                            running = false;
+
+                            Console.WriteLine($"\nThe {name} goal has been created and added to the list successfully.");
+
+                            running = false;
 
                             break;
 
                         case 3:
 
-                            Console.WriteLine("\nCreateGoal Test 3."); // remove!
+                            Console.WriteLine("\nChecklist Goal.");
 
-                            createGoal = false;
-
-                            break;
-
-                        case 4: // remove!
-
-                            Console.WriteLine("\nCreateGoal Test 4."); // remove!
-
-                            Console.Write("Name of the goal:");
+                            Console.Write("\nName of the goal:");
                             
-                            string name = Console.ReadLine();
+                            name = Console.ReadLine();
 
-                            Console.Write("Description of the goal:");
+                            Console.Write("\nDescription of the goal:");
                             
-                            string description = Console.ReadLine();
+                            description = Console.ReadLine();
 
-                            Console.Write("Points value of the goal:");
+
+                            while (true)
+                            {
+
+                            Console.Write("\nPoints value of the goal:");
+
+                                bool result = int.TryParse(Console.ReadLine(), out number);
+
+                                if (result == true && number >= 1)
+                                {
+
+                                    points = number;
+                                    
+                                    break;
+
+                                }
+                                else
+                                {
+
+                                    Console.WriteLine("\nInvalid input: Insert a positive number.");
+
+                                }
+                                
+                            }
+
+                            while (true)
+                            {
+
+                                Console.Write("\nHow many times this goal needs to be acomplished to earn a bonus:");
+
+                                bool result = int.TryParse(Console.ReadLine(), out number);
+
+                                if (result == true && number >= 1)
+                                {
+
+                                    target = number;
+                                    
+                                    break;
+
+                                }
+                                else
+                                {
+
+                                    Console.WriteLine("\nInvalid input: Insert a positive number.");
+
+                                }
+                                
+                            }
                             
-                            string points = Console.ReadLine();
+                            while (true)
+                            {
 
-                            Goal goal = new Goal(name, description, points);
+                                Console.Write("\nBonus value of the goal:");
 
-                            _goals.Add(goal);
+                                bool result = int.TryParse(Console.ReadLine(), out number);
 
-                            createGoal = false;
+                                if (result == true && number >= 1)
+                                {
+
+                                    bonus = number;
+                                    
+                                    break;
+
+                                }
+                                else
+                                {
+
+                                    Console.WriteLine("\nInvalid input: Insert a positive number.");
+                                    
+                                }
+                                
+                            }
+
+                            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, target, bonus, 0);
+
+                            _goals.Add(checklistGoal);
+
+                            running = false;
 
                             Console.WriteLine($"\nThe {name} goal has been created and added to the list successfully.");
 
@@ -228,7 +415,7 @@ namespace QuestSystem
                 catch (Exception) // Exceding the requirements.
                 {
 
-                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.*");
+                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
 
                 }
 
@@ -246,7 +433,7 @@ namespace QuestSystem
 
                 while (true)
                 {
-                    try
+                    try // Exceding the requirements.
                     {
 
                         Console.Write("\nSelect the goal you are going to erase from the list (Select 0 to return to the main menu)\nSelection: ");
@@ -259,7 +446,7 @@ namespace QuestSystem
                             break;
 
                         }
-                        else if (_goals.Count() > userSelection && _goals[userSelection] != null)
+                        else if (_goals.Count() >= userSelection && _goals[userSelection] != null)
                         {
 
                             _goals.RemoveAt(userSelection);
@@ -272,14 +459,14 @@ namespace QuestSystem
                         else
                         {
 
-                            Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
+                            Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
 
                         }
                     }
-                    catch (Exception)
+                    catch (Exception) // Exceding the requirements.
                     {
                         
-                        Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.**");
+                        Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
                         
                     }
 
@@ -291,7 +478,57 @@ namespace QuestSystem
 
         private void RecordEvent()
         {
-            //
+
+            ListGoalNames();
+
+            if (_goals.Count()>0)
+            {
+
+                while (true)
+                {
+                    try // Exceding the requirements.
+                    {
+
+                        Console.Write("\nSelect the goal you acomplished (Select 0 to return to the main menu)\nSelection: ");
+
+                        int userSelection = int.Parse(Console.ReadLine()) - 1;
+
+                        if (userSelection == -1)
+                        {
+
+                            break;
+
+                        }
+                        else if (_goals.Count() >= userSelection && _goals[userSelection] != null)
+                        {
+
+                            Goal selectedGoal = _goals[userSelection];
+
+                            _score += selectedGoal.RecordEvent();
+
+                            Console.WriteLine("\nGoal status updated.");
+
+                            break;
+
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
+
+                        }
+                    }
+                    catch (Exception) // Exceding the requirements.
+                    {
+                        
+                        Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
+                        
+                    }
+
+                }
+
+            }
+
         }
 
         private void SaveGoals()
@@ -329,24 +566,101 @@ namespace QuestSystem
         private void LoadGoals()
         {
 
-            Console.Write("\Load the goal list from a txt file.\n(Do not add the .txt at the end of the file name)\nFile name: ");
+            bool running = true;
 
-            string fileName = Console.ReadLine()+".txt";
-
-            string[] lines = System.IO.File.ReadAllLines(filename);
-
-            foreach (string line in lines)
+            while (running == true)
             {
 
-                string[] parts = line.Split("¦");
+                try // Exceding the requirements.
+                {
 
-                string goalType = parts[0];
+                    Console.Write("\nLoad the goal list from a txt file.\nWarning this process will erase the current goal list. Do you want to proceed?\n  1. Yes (Load file)\n  0. No (Return to main menu)\nSelection: ");
 
-                string shortName = parts[1];
+                    int userSelection = int.Parse(Console.ReadLine());
 
-                string description = parts[2];
+                    if (userSelection == 1)
+                    {
 
-                string points = parts[3];
+                        Console.Write("\nNote: Do not add the .txt at the end of the file name.\nFile name: ");
+
+                        string fileName = Console.ReadLine()+".txt";
+
+                        if (File.Exists(fileName))
+                        {
+
+                            _goals.Clear();
+
+                            using (StreamReader reader = new StreamReader(fileName))
+                            {
+                                string firstLine = reader.ReadLine();
+
+                                _score = int.Parse(firstLine);
+
+                                string line;
+
+                                while ((line = reader.ReadLine()) != null)
+                                {
+
+                                    string[] parts = line.Split("¦");
+
+                                    string goalType = parts[0];
+
+                                    string shortName = parts[1];
+
+                                    string description = parts[2];
+
+                                    int points = int.Parse(parts[3]);
+
+                                    switch (goalType)
+                                    {
+                                        
+                                        case "testGoal":
+
+                                            Goal goal = new Goal(shortName, description, points);
+
+                                            _goals.Add(goal);
+
+                                            break;
+
+                                    }
+
+                                    Console.WriteLine("\nGoal list loaded.");
+
+                                }
+
+                            }
+
+                            running = false;
+                            
+                        }
+                        else
+                        {
+
+                            Console.WriteLine($"\nFile {fileName} not found.");
+
+                        }
+
+                    }
+                    else if (userSelection == 0)
+                    {
+
+                        running = false;
+
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
+
+                    }
+
+                }
+                catch (Exception) // Exceding the requirements.
+                {
+
+                    Console.WriteLine("\nInvalid input: Selected option is not a number.\nSelect a valid option from the list.");
+
+                }
 
             }
 

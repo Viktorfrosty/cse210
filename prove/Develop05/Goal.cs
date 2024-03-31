@@ -4,13 +4,13 @@ namespace QuestSystem
     public class Goal
     {
 
-        private string _shortName;
+        protected string _shortName;
 
-        private string _description;
+        protected string _description;
 
-        private string _points;
+        protected int _points;
 
-        public Goal(string name, string description, string points)
+        public Goal(string name, string description, int points)
         {
 
             _shortName = name;
@@ -21,9 +21,11 @@ namespace QuestSystem
             
         }
         
-        public string GetDetailString()
+        public virtual string GetDetailString()
         {
-            return $"[ ] {_shortName} ({_description})";
+
+            return $"{_shortName} ({_description})";
+
         }
 
         public virtual string GetStringRepresentation()
@@ -33,9 +35,11 @@ namespace QuestSystem
 
         }
 
-        public virtual void RecordEvent()
+        public virtual int RecordEvent()
         {
-            //
+
+            return _points;
+
         }
 
         public virtual bool IsCompleted()
@@ -43,6 +47,13 @@ namespace QuestSystem
 
             return false;
             
+        }
+
+        public string GetName()
+        {
+
+            return _shortName;
+
         }
 
     }

@@ -1,4 +1,4 @@
-0
-test1¦test1¦1
-test2¦test2¦2
-test3¦test3¦3
+7
+SimpleGoal¦test 1¦test¦1¦True
+EternalGoal¦test 2¦test¦2
+ChecklistGoal¦test 3¦test¦3¦1¦1¦1
