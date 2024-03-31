@@ -41,7 +41,7 @@ namespace QuestSystem
             if (_target == _amountCompleted)
             {
 
-                Console.WriteLine($"\nCongratulations! you completed your objective.\nYou earned {_points} points and {_bonus} points.");
+                Console.WriteLine($"\nCongratulations! you completed your objective.\nYou earned {_points} points and {_bonus} bonus points.");
 
                 return _points + _bonus;
  
@@ -50,7 +50,7 @@ namespace QuestSystem
             {
 
                 Console.WriteLine($"\nCongratulations! You earned {_points} points.");
-                
+
                 return _points;
 
             }
@@ -60,7 +60,7 @@ namespace QuestSystem
         public override bool IsCompleted()
         {
 
-            if (_target == _amountCompleted)
+            if (_amountCompleted >= _target)
             {
 
                 return true;

@@ -4,4 +4,4 @@ simple¦speak with the bishop¦ask about a few doubts I have¦5¦False
 eternal¦study the scriptures¦read the scriptures daily¦25
 eternal¦practice the hymns¦take 1 hour daily to practice the hymn 100¦25
 checklist¦attend the temple¦attend the temple and perform an ordinance¦100¦5¦1000¦0
-checklist¦attend the JAS gatherings¦interact with other JAS in the ward¦50¦2¦250¦1
+checklist¦attend the JA gatherings¦interact with other JA in the ward¦50¦2¦250¦1
