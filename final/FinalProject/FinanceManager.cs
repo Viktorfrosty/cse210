@@ -27,10 +27,10 @@ namespace Inversions
 
         }
 
-        public virtual DateTime StringToDate(string dateString)
+        public virtual DateOnly StringToDate(string dateString)// W.I.P.
         {;
 
-            DateTime date = DateTime.ParseExact(dateString, _dateFormat, null);
+            DateOnly date = DateOnly.ParseExact(dateString, _dateFormat, null);
 
             return date;
 
@@ -43,10 +43,10 @@ namespace Inversions
 
         }
 
-        public virtual void Evaluation()
+        public virtual void Evaluation()// W.I.P.
         {
 
-            //
+            Console.WriteLine("placeholder");
 
         }
 

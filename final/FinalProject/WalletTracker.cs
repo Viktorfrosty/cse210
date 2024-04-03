@@ -280,7 +280,7 @@ namespace Inversions
 
         }
 
-        private void NewElement(int listSelection)
+        private void NewElement(int listSelection)// W.I.P.
         {
 
             string element = null;
@@ -542,7 +542,7 @@ namespace Inversions
 
         }
         
-        private void EraseElement()
+        private void EraseElement()// W.I.P.
         {
 
             Console.Clear();
@@ -564,13 +564,23 @@ namespace Inversions
 
                     GetListdetail(menuSelection);
 
+                    Console.Write("cuak ");
+
+                    int user1 = int.Parse(Console.ReadLine())-1;
+
+                    _savings.RemoveAt(user1);
+
                     break;
 
                 case 2:
 
                     GetListdetail(menuSelection);
 
-                    _loans.RemoveAt(1);
+                    Console.Write("cuak ");
+
+                    int user2 = int.Parse(Console.ReadLine())-1;
+
+                    _loans.RemoveAt(user2);
 
                     break;
 
@@ -583,11 +593,55 @@ namespace Inversions
 
             Console.Clear();
 
-            ShowList();
+            string actionDescription = "Are you going to select a";
 
-            Console.Write("cuak ");
+            int menuSelection = ListSelector(actionDescription);
 
-            
+            switch (menuSelection)
+            {
+
+                case 0:
+
+                    Console.Clear();
+
+                    break;
+
+                case 1:
+
+                    Console.Clear();
+
+                    GetListdetail(menuSelection);
+
+                    Console.Write("cuak ");
+
+                    int user1 = int.Parse(Console.ReadLine())-1;
+
+                    Saving requestedSaving = _savings[user1];
+
+                    requestedSaving.Evaluation();
+
+                    break;
+
+                case 2:
+
+                    Console.Clear();
+
+                    GetListdetail(menuSelection);
+
+                    Console.Write("cuak ");
+
+                    int user2 = int.Parse(Console.ReadLine())-1;
+
+                    _loans.RemoveAt(user2);
+
+                    Loan requestedloan = _loans[user2];
+
+                    requestedloan.Evaluation();
+
+                    break;
+
+            }
+
             
         }
 
