@@ -1,9 +1,15 @@
-using System;
+using Inversions;
 
 class Program
 {
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+
+        WalletTracker tracker = new WalletTracker();
+
+        tracker.Menu();
+
     }
+
 }
