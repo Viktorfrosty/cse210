@@ -43,7 +43,7 @@ namespace Inversions
 
         }
 
-        public virtual void TeoricProgress()
+        public virtual void Evaluation()
         {
 
             //

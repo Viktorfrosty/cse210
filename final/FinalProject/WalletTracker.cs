@@ -1,5 +1,3 @@
-using System.Runtime.Serialization;
-
 namespace Inversions
 {
 
@@ -73,7 +71,7 @@ namespace Inversions
 
                         case 5:
 
-                            Evaluation();
+                            TeoricProgress();
 
                             break;
 
@@ -315,6 +313,8 @@ namespace Inversions
 
                         string startingDate;
 
+                        int duration;
+
                         Console.Write("type");
 
                         userInput = int.TryParse(Console.ReadLine(), out int userSelection);
@@ -367,6 +367,29 @@ namespace Inversions
 
                         }
 
+                        Console.Write("duration");
+
+                        while (true)
+                        {
+                            
+                            consoleInput = int.TryParse(Console.ReadLine(), out int durationInput);
+
+                            if (consoleInput)
+                            {
+
+                                duration = durationInput;
+
+                                break;
+
+                            }
+                            else
+                            {
+
+                                InvalidInputMessage();    
+                            
+                            }
+
+                        }
                         
                         Console.Write("year");
 
@@ -471,7 +494,7 @@ namespace Inversions
 
                                     type = "Simple";
 
-                                    SimpleSaving simpleSaving = new(amount, apr, startingDate);
+                                    SimpleSaving simpleSaving = new(amount, apr, startingDate, duration);
 
                                     _savings.Add(simpleSaving);
 
@@ -483,7 +506,7 @@ namespace Inversions
 
                                     type = "Compound";
 
-                                    CompoundSaving compoundSaving = new(amount, apr, startingDate);
+                                    CompoundSaving compoundSaving = new(amount, apr, startingDate, duration);
 
                                     _savings.Add(compoundSaving);
 
@@ -555,10 +578,16 @@ namespace Inversions
 
         }
 
-        private void Evaluation()
+        private void TeoricProgress()
         {
 
             Console.Clear();
+
+            ShowList();
+
+            Console.Write("cuak ");
+
+            
             
         }
 
