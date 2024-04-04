@@ -6,9 +6,9 @@ namespace Inversions
 
         DateOnly date = DateOnly.FromDateTime(DateTime.Now);
 
-        List<Saving> _savings = new();
+        protected List<Saving> _savings = new();
 
-        List<Loan> _loans = new();
+        protected List<Loan> _loans = new();
 
         public WalletTracker()
         {
@@ -29,7 +29,7 @@ namespace Inversions
             while (mainMenuRunning == true)
             {
 
-                Console.Write($"Menu Options:\n  1: Show elements registered.\n  2: Add a new element to the registry.\n  3: Erase an element from the registry.\n  4: Update an element.\n  5: Show the teoric progression of an element.\n 6: Save the registry.\n7: Load a registry.\n  0: Exit the program.\nSelection: ");
+                Console.Write($"Menu Options:\n  1: Show elements registered.\n  2: Add a new element to the registry.\n  3: Erase an element from the registry.\n  4: Update an element.\n  5: Show the teoric progression of an element.\n  6: Save the registry.\n  7: Load a registry.\n  0: Exit the program.\nSelection: ");
 
                 bool userInput = int.TryParse(Console.ReadLine(), out int userSelection);
 
@@ -77,13 +77,13 @@ namespace Inversions
 
                         case 6:
 
-                            SaveRegistry();
+                            //SaveRegistry();
 
                             break;
 
                         case 7:
 
-                            GetRegistry();
+                            //GetRegistry();
 
                             break;
 
