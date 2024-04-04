@@ -43,6 +43,13 @@ namespace Inversions
 
         }
 
+        public virtual string GetStringElement()
+        {
+
+            return $"{_type}‖{_startingDate}‖{_rate}‖{_amount}";
+
+        }
+
         public virtual void Evaluation()// W.I.P.
         {
 

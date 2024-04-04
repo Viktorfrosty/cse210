@@ -4,7 +4,9 @@ namespace Inversions
     public class WalletTracker
     {
 
-        DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+        DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
+
+        FileHandler _file = new();
 
         protected List<Saving> _savings = new();
 
@@ -24,7 +26,7 @@ namespace Inversions
 
             Console.Clear();
 
-            Console.WriteLine($"Welcome to the personal finance calculator program.\nDate: {date}\n");
+            Console.WriteLine($"Welcome to the personal finance calculator program.\nDate: {_date}\n");
 
             while (mainMenuRunning == true)
             {
@@ -77,13 +79,13 @@ namespace Inversions
 
                         case 6:
 
-                            //SaveRegistry();
+                            _file.SaveRegistry();
 
                             break;
 
                         case 7:
 
-                            //GetRegistry();
+                            _file.GetRegistry();
 
                             break;
 

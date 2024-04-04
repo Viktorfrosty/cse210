@@ -6,6 +6,13 @@ namespace Inversions
     public class FileHandler: WalletTracker
     {
 
+        public FileHandler()
+        {
+
+            //
+
+        }
+
         public void SaveRegistry()// W.I.P.
         {
 
@@ -16,13 +23,13 @@ namespace Inversions
             if (_savings.Count > 0)
             {
 
-                using (StreamWriter outputFile = new StreamWriter(fileName))
+                using (StreamWriter outputFile = new(fileName))
                 {
 
                     foreach (Saving record in _savings)
                     {
 
-                        outputFile.WriteLine(record.GetElementDetails()/*change the method*/);
+                        outputFile.WriteLine(record.GetStringElement());
 
                     }
                     
@@ -33,13 +40,13 @@ namespace Inversions
             else if (_loans.Count > 0)
             {
 
-                using (StreamWriter outputFile = new StreamWriter(fileName))
+                using (StreamWriter outputFile = new(fileName))
                 {
 
                     foreach (Loan record in _loans)
                     {
 
-                        outputFile.WriteLine(record.GetElementDetails()/*change the method*/);
+                        outputFile.WriteLine(record.GetStringElement());
 
                     }
                     
@@ -63,7 +70,7 @@ namespace Inversions
             if (File.Exists(fileName))
             {
 
-                using (StreamReader reader = new StreamReader(fileName))
+                using (StreamReader reader = new(fileName))
                 {
 
                     string line;
