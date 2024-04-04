@@ -8,20 +8,20 @@ namespace Inversions
 
         protected double _amount;
 
-        protected double _apr;
+        protected double _rate;
 
         protected string _startingDate;
 
         protected string _dateFormat = "yyyy/MM/dd";
 
-        public FinanceManager(double amount, double apr, string startingDate)
+        public FinanceManager(double amount, double rate, string startingDate)
         {
 
             _type = "Finance Element";
 
             _amount = amount;
 
-            _apr = apr;
+            _rate = rate;
 
             _startingDate = startingDate;
 
@@ -39,7 +39,7 @@ namespace Inversions
         public virtual string GetElementDetails()
         {
 
-            return $"{_type}, Date: {_startingDate}, APR: {_apr}%, Amount: ${_amount}";
+            return $"{_type}, Date: {_startingDate}, rate: {_rate}%, Amount: ${_amount}";
 
         }
 

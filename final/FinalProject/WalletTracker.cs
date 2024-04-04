@@ -29,7 +29,7 @@ namespace Inversions
             while (mainMenuRunning == true)
             {
 
-                Console.Write($"\nMenu Options:\n  1: Show elements listed.\n  2: Add a new element to the list.\n  3: Erase an element from the list.\n  4: Update an element.\n  5: Show the progression of an element.\n  0: Exit the program.\nSelection: ");
+                Console.Write($"Menu Options:\n  1: Show elements registered.\n  2: Add a new element to the registry.\n  3: Erase an element from the registry.\n  4: Update an element.\n  5: Show the teoric progression of an element.\n 6: Save the registry.\n7: Load a registry.\n  0: Exit the program.\nSelection: ");
 
                 bool userInput = int.TryParse(Console.ReadLine(), out int userSelection);
 
@@ -65,13 +65,25 @@ namespace Inversions
                         
                         case 4:
 
-                            EraseElement();
+                            //
 
                             break;
 
                         case 5:
 
                             TeoricProgress();
+
+                            break;
+
+                        case 6:
+
+                            SaveRegistry();
+
+                            break;
+
+                        case 7:
+
+                            GetRegistry();
 
                             break;
 
@@ -110,7 +122,7 @@ namespace Inversions
             while (true)
             {
 
-                Console.Write($"\n{actionDescription}:\n  1: Saving.\n  2: Loan.\n  0: Go back to te main menu.\nSelection: ");
+                Console.Write($"{actionDescription}:\n  1: Saving.\n  2: Loan.\n  0: Go back to te main menu.\nSelection: ");
 
                 bool userInput = int.TryParse(Console.ReadLine(), out int userSelection);
 
@@ -208,11 +220,13 @@ namespace Inversions
 
                         }
 
+                        Console.WriteLine("");
+
                     }
                     else
                     {
                         
-                        Console.WriteLine("No Savings found.");
+                        Console.WriteLine("No Savings found.\n");
 
                     }
 
@@ -232,11 +246,13 @@ namespace Inversions
 
                         }
 
+                        Console.WriteLine("");
+
                     }
                     else
                     {
                         
-                        Console.WriteLine("No Loans found.");
+                        Console.WriteLine("No Loans found.\n");
                         
                     }
 
@@ -309,7 +325,7 @@ namespace Inversions
 
                         double amount;
 
-                        double apr;
+                        double rate;
 
                         string startingDate;
 
@@ -343,17 +359,17 @@ namespace Inversions
 
                         }
 
-                        Console.Write("apr");
+                        Console.Write("rate");
 
                         while (true)
                         {
 
-                            consoleInput = int.TryParse(Console.ReadLine(), out int aprIput);
+                            consoleInput = int.TryParse(Console.ReadLine(), out int rateIput);
 
                             if (consoleInput)
                             {
 
-                                apr = aprIput;
+                                rate = rateIput;
 
                                 break;
 
@@ -448,7 +464,7 @@ namespace Inversions
 
                             }
 
-                            Console.Write("day");
+                            Console.Write("day: ");
 
                             while (true)
                             {
@@ -494,7 +510,7 @@ namespace Inversions
 
                                     type = "Simple";
 
-                                    SimpleSaving simpleSaving = new(amount, apr, startingDate, duration);
+                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, duration);
 
                                     _savings.Add(simpleSaving);
 
@@ -506,7 +522,7 @@ namespace Inversions
 
                                     type = "Compound";
 
-                                    CompoundSaving compoundSaving = new(amount, apr, startingDate, duration);
+                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, duration);
 
                                     _savings.Add(compoundSaving);
 
@@ -564,16 +580,58 @@ namespace Inversions
 
                     GetListdetail(menuSelection);
 
-                    Console.Write("cuak ");
+                    if (_savings.Count >0 )
+                    {
 
-                    int user1 = int.Parse(Console.ReadLine())-1;
+                        Console.Write("Select the element that is going to be erased.\n(Select 0 to return to the main menu)\nSelection: ");
 
-                    _savings.RemoveAt(user1);
+                        bool savingsSelection = int.TryParse(Console.ReadLine(), out int elementIndex);
+
+                        elementIndex -= 1;
+
+                        if (savingsSelection)
+                        {
+
+                            if (elementIndex == -1)
+                            {
+
+                                Console.Clear();
+
+                                break;
+
+                            }
+                            else if (_savings.Count >= elementIndex && _savings[elementIndex] != null)
+                            {
+
+                                
+                                _savings.RemoveAt(elementIndex);
+
+                                Console.Clear();
+                                
+                                Console.WriteLine("Saving removed from the list.\n");
+
+                            }
+                            else
+                            {
+                                
+                                InvalidSelectionMessage();
+
+                            }
+
+                        }
+                        else
+                        {
+
+                            InvalidInputMessage();
+
+                        }
+
+                    }
 
                     break;
 
                 case 2:
-
+/*
                     GetListdetail(menuSelection);
 
                     Console.Write("cuak ");
@@ -581,11 +639,16 @@ namespace Inversions
                     int user2 = int.Parse(Console.ReadLine())-1;
 
                     _loans.RemoveAt(user2);
-
+*/
                     break;
 
             }
 
+        }
+
+        private void UpdateElement()// W.I.P.
+        {
+            //
         }
 
         private void TeoricProgress()
@@ -650,7 +713,7 @@ namespace Inversions
 
             Console.Clear();
 
-            Console.WriteLine("Selection not valid, please insert a number.");
+            Console.WriteLine("Selection not valid, please insert a number.\n");
             
         }
 
@@ -659,7 +722,7 @@ namespace Inversions
 
             Console.Clear();
 
-            Console.WriteLine("Select a valid number.");
+            Console.WriteLine("Select a valid number.\n");
             
         }
 

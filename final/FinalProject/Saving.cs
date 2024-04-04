@@ -6,7 +6,7 @@ namespace Inversions
 
         protected int _duration; 
 
-        public Saving(double amount, double apr, string startingDate, int duration): base(amount, apr, startingDate)
+        public Saving(double amount, double rate, string startingDate, int duration): base(amount, rate, startingDate)
         {
 
             _duration = duration;
