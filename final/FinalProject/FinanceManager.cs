@@ -12,9 +12,11 @@ namespace Inversions
 
         protected string _startingDate;
 
+        protected string _description;
+
         protected string _dateFormat = "yyyy/MM/dd";
 
-        public FinanceManager(double amount, double rate, string startingDate)
+        public FinanceManager(double amount, double rate, string startingDate, string description)
         {
 
             _type = "Finance Element";
@@ -24,6 +26,8 @@ namespace Inversions
             _rate = rate;
 
             _startingDate = startingDate;
+
+            _description = description;
 
         }
 
@@ -39,14 +43,14 @@ namespace Inversions
         public virtual string GetElementDetails()
         {
 
-            return $"{_type}, Date: {_startingDate}, rate: {_rate}%, Amount: ${_amount}";
+            return $"{_type}, Date: {_startingDate}, Amount: ${_amount}, rate: {_rate}%, Description: {_description}";
 
         }
 
         public virtual string GetStringElement()
         {
 
-            return $"{_type}‖{_startingDate}‖{_rate}‖{_amount}";
+            return $"{_type}‖{_startingDate}‖{_rate}‖{_amount}‖{_description}";
 
         }
 

@@ -6,8 +6,6 @@ namespace Inversions
 
         DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
 
-        FileHandler _file = new();
-
         protected List<Saving> _savings = new();
 
         protected List<Loan> _loans = new();
@@ -79,13 +77,13 @@ namespace Inversions
 
                         case 6:
 
-                            _file.SaveRegistry();
+                            //SaveRegistry();
 
                             break;
 
                         case 7:
 
-                            _file.GetRegistry();
+                            //GetRegistry();
 
                             break;
 
@@ -331,6 +329,8 @@ namespace Inversions
 
                         string startingDate;
 
+                        string description;
+
                         int duration;
 
                         Console.Write("type");
@@ -496,6 +496,10 @@ namespace Inversions
 
                         }
 
+                        Console.Write("description: ");
+
+                        description = Console.ReadLine();
+
                         if (userInput)
                         {
 
@@ -512,7 +516,7 @@ namespace Inversions
 
                                     type = "Simple";
 
-                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, duration);
+                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, description, duration);
 
                                     _savings.Add(simpleSaving);
 
@@ -524,7 +528,7 @@ namespace Inversions
 
                                     type = "Compound";
 
-                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, duration);
+                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, description, duration);
 
                                     _savings.Add(compoundSaving);
 

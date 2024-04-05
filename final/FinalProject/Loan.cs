@@ -4,12 +4,10 @@ namespace Inversions
     public class Loan: FinanceManager
     {
 
-        protected string _finishingDate;
-
-        public Loan(double amount, double rate, string startingDate, string finishingDate): base(amount, rate, startingDate)
+        public Loan(double amount, double rate, string startingDate, string description): base(amount, rate, startingDate, description)
         {
 
-            _finishingDate = finishingDate;
+            //
 
         }
 

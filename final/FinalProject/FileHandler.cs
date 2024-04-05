@@ -13,7 +13,7 @@ namespace Inversions
 
         }
 
-        public void SaveRegistry()// W.I.P.
+        public void SaveRegistry()
         {
 
             Console.Write("\nSave the registry on a CSV file.\n(Do not add the .CSV at the end of the file name.\nFile name: ");
@@ -91,14 +91,16 @@ namespace Inversions
 
                             int rate = int.Parse(parts[3]);
 
-                            int duration = int.Parse(parts[4]);
+                            string description = parts[4];
+
+                            int duration = int.Parse(parts[5]);
 
                             switch (element)
                             {
                                 
                                 case "Simple Saving":
 
-                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, duration);
+                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, description,duration);
 
                                     _savings.Add(simpleSaving);
 
@@ -106,7 +108,7 @@ namespace Inversions
 
                                 case "Compound Saving":
 
-                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, duration);
+                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, description, duration);
 
                                     _savings.Add(compoundSaving);
 
