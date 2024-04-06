@@ -14,7 +14,7 @@ namespace Inversions
         public override void Evaluation()// W.I.P.
         {
 
-            //
+            Console.WriteLine("Payday loan evaluation placeholder.");
 
         }
 
