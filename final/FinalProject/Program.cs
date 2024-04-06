@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
 
-        WalletTracker tracker = new WalletTracker();
+        WalletTracker tracker = new();
 
         tracker.Menu();
 

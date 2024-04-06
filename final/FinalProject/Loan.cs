@@ -1,10 +1,10 @@
 namespace Inversions
 {
 
-    public class Loan: FinanceManager
+    public class Loan: FinancesManager
     {
 
-        public Loan(double amount, double rate, string startingDate, string description): base(amount, rate, startingDate, description)
+        public Loan(double amount, double rate, string registrationDate, string lapseOfTime, int duration, string description): base(amount, rate, registrationDate, lapseOfTime, duration, description)
         {
 
             //

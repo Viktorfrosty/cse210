@@ -4,7 +4,7 @@ namespace Inversions
     public class PersonalLoan: Loan
     {
 
-        public PersonalLoan(double amount, double rate, string startingDate, string description): base(amount, rate, startingDate, description)
+        public PersonalLoan(double amount, double rate, string registrationDate, string lapseOfTime, int duration, string description): base(amount, rate, registrationDate, lapseOfTime, duration, description)
         {
 
             _type = "Personal Loan";
@@ -14,7 +14,7 @@ namespace Inversions
         public override void Evaluation()// W.I.P.
         {
 
-            Console.WriteLine("placeholder");
+            //
 
         }
 

@@ -4,17 +4,17 @@ namespace Inversions
     public class SimpleSaving: Saving
     {
 
-        public SimpleSaving(double amount, double rate, string startingDate, string description, int duration): base(amount, rate, startingDate, description, duration)
+        public SimpleSaving(double amount, double rate, string registrationDate, string lapseOfTime, int duration, string description): base(amount, rate, registrationDate, lapseOfTime, duration, description)
         {
 
             _type = "Simple Saving";
 
         }
 
-        public override void Evaluation()
+        public override void Evaluation()// W.I.P.
         {
 
-            Console.WriteLine(_amount * _rate * (_duration/365));
+            //
             
         }
 

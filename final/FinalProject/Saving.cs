@@ -1,15 +1,13 @@
 namespace Inversions
 {
 
-    public class Saving: FinanceManager
+    public class Saving: FinancesManager
     {
 
-        protected int _duration; 
-
-        public Saving(double amount, double rate, string startingDate, string description, int duration): base(amount, rate, startingDate, description)
+        public Saving(double amount, double rate, string registrationDate, string lapseOfTime, int duration, string description): base(amount, rate, registrationDate, lapseOfTime, duration, description)
         {
 
-            _duration = duration;
+            //
 
         }
 

@@ -19,7 +19,7 @@ namespace Inversions
 
         }
 
-        public void Menu()
+        public void Menu()// W.I.P.
         {
 
             bool mainMenuRunning = true;
@@ -43,7 +43,7 @@ namespace Inversions
                         
                         default:
 
-                            InvalidSelectionMessage();
+                            ShowInvalidSelectionMessage();
 
                             break;
 
@@ -55,25 +55,41 @@ namespace Inversions
 
                         case 2:
 
-                            AddElement();
+                            Console.Clear();
+
+                            Console.WriteLine("Test erase option.\n");
+
+                            //AddElement();
 
                             break;
 
                         case 3:
 
-                            EraseElement();
+                            Console.Clear();
+
+                            Console.WriteLine("Test erase option.\n");
+
+                            //EraseElement();
 
                             break;
                         
                         case 4:
 
-                            //
+                            Console.Clear();
+
+                            Console.WriteLine("Test update option.\n");
+
+                            //UpdateElement();
 
                             break;
 
                         case 5:
 
-                            TeoricProgress();
+                            Console.Clear();
+
+                            Console.WriteLine("Test theric progress option.\n");
+
+                            //TeoricProgress();
 
                             break;
 
@@ -84,6 +100,10 @@ namespace Inversions
                             break;
 
                         case 7:
+
+                            Console.Clear();
+
+                            Console.WriteLine("Test load option.\n");
 
                             GetRegistry();
 
@@ -105,7 +125,7 @@ namespace Inversions
                 else
                 {
 
-                    InvalidInputMessage();
+                    ShowInvalidInputMessage();
 
                 }
 
@@ -144,7 +164,7 @@ namespace Inversions
 
                          Console.Clear();
 
-                        InvalidSelectionMessage();
+                        ShowInvalidSelectionMessage();
                         
                     }
 
@@ -154,7 +174,7 @@ namespace Inversions
 
                      Console.Clear();
 
-                    InvalidInputMessage();
+                    ShowInvalidInputMessage();
                     
                 }
 
@@ -184,13 +204,13 @@ namespace Inversions
 
                 case 1:
 
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     break;
 
                 case 2:
 
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     break;
 
@@ -198,7 +218,7 @@ namespace Inversions
 
         }
 
-        private void GetListdetail(int listSelection)
+        private void GetListdetails(int listSelection)
         {
 
             Console.Clear();
@@ -329,11 +349,13 @@ namespace Inversions
 
                         double rate;
 
-                        string startingDate;
+                        string registrationDate;
 
-                        string description;
+                        string lapseOfTime;
 
                         int duration;
+
+                        string description;
 
                         Console.Write("type");
 
@@ -357,7 +379,7 @@ namespace Inversions
                             else
                             {
 
-                                InvalidInputMessage();    
+                                ShowInvalidInputMessage();    
                             
                             }
 
@@ -381,11 +403,15 @@ namespace Inversions
                             else
                             {
 
-                                InvalidInputMessage();    
+                                ShowInvalidInputMessage();    
                             
                             }
 
                         }
+
+                        Console.Write("lapse of time");
+
+                        lapseOfTime = Console.ReadLine();
 
                         Console.Write("duration");
 
@@ -405,7 +431,7 @@ namespace Inversions
                             else
                             {
 
-                                InvalidInputMessage();    
+                                ShowInvalidInputMessage();    
                             
                             }
 
@@ -438,7 +464,7 @@ namespace Inversions
                                 else
                                 {
 
-                                    InvalidInputMessage();    
+                                    ShowInvalidInputMessage();    
                                 
                                 }
 
@@ -462,7 +488,7 @@ namespace Inversions
                                 else
                                 {
 
-                                    InvalidInputMessage();    
+                                    ShowInvalidInputMessage();    
                                 
                                 }
 
@@ -486,13 +512,13 @@ namespace Inversions
                                 else
                                 {
 
-                                    InvalidInputMessage();    
+                                    ShowInvalidInputMessage();    
                                 
                                 }
 
                             }
 
-                            startingDate = $"{year}/{month}/{day}";
+                            registrationDate = $"{year}/{month}/{day}";
 
                             break;
 
@@ -510,7 +536,7 @@ namespace Inversions
                                 
                                 default:
 
-                                    InvalidSelectionMessage();
+                                    ShowInvalidSelectionMessage();
 
                                     break;
 
@@ -518,7 +544,7 @@ namespace Inversions
 
                                     type = "Simple";
 
-                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, description, duration);
+                                    SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
                                     _savings.Add(simpleSaving);
 
@@ -530,7 +556,7 @@ namespace Inversions
 
                                     type = "Compound";
 
-                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, description, duration);
+                                    CompoundSaving compoundSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
                                     _savings.Add(compoundSaving);
 
@@ -544,7 +570,7 @@ namespace Inversions
                         else
                         {
 
-                        InvalidInputMessage();
+                        ShowInvalidInputMessage();
 
                         }
 
@@ -566,7 +592,7 @@ namespace Inversions
 
         }
         
-        private void EraseElement()// W.I.P.
+        private void EraseElement(int listSelection)// W.I.P.
         {
 
             Console.Clear();
@@ -586,7 +612,7 @@ namespace Inversions
 
                 case 1:
 
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     if (_savings.Count >0 )
                     {
@@ -622,7 +648,7 @@ namespace Inversions
                             else
                             {
                                 
-                                InvalidSelectionMessage();
+                                ShowInvalidSelectionMessage();
 
                             }
 
@@ -630,7 +656,7 @@ namespace Inversions
                         else
                         {
 
-                            InvalidInputMessage();
+                            ShowInvalidInputMessage();
 
                         }
 
@@ -640,7 +666,7 @@ namespace Inversions
 
                 case 2:
 /*
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     Console.Write("cuak ");
 
@@ -654,12 +680,12 @@ namespace Inversions
 
         }
 
-        private void UpdateElement()// W.I.P.
+        private void UpdateElement(int listSelection)// W.I.P.
         {
             //
         }
 
-        private void TeoricProgress()
+        private void TeoricProgress(int listSelection)// W.I.P.
         {
 
             Console.Clear();
@@ -681,7 +707,7 @@ namespace Inversions
 
                     Console.Clear();
 
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     Console.Write("cuak ");
 
@@ -697,7 +723,7 @@ namespace Inversions
 
                     Console.Clear();
 
-                    GetListdetail(menuSelection);
+                    GetListdetails(menuSelection);
 
                     Console.Write("cuak ");
 
@@ -788,22 +814,24 @@ namespace Inversions
 
                             string element = parts[0];
 
-                            string startingDate = parts[1];
+                            string registrationDate = parts[1];
 
                             int amount = int.Parse(parts[2]);
 
                             int rate = int.Parse(parts[3]);
 
-                            string description = parts[4];
+                            string lapseOfTime = parts[4];
 
                             int duration = int.Parse(parts[5]);
+
+                            string description = parts[6];
 
                             switch (element)
                             {
                                 
                                 case "Simple Saving":
 
-                                    SimpleSaving simpleSaving = new(amount, rate, startingDate, description,duration);
+                                    SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
                                     _savings.Add(simpleSaving);
 
@@ -811,7 +839,7 @@ namespace Inversions
 
                                 case "Compound Saving":
 
-                                    CompoundSaving compoundSaving = new(amount, rate, startingDate, description, duration);
+                                    CompoundSaving compoundSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
                                     _savings.Add(compoundSaving);
 
@@ -851,7 +879,7 @@ namespace Inversions
 
         }
 
-        private void InvalidInputMessage()
+        private void ShowInvalidInputMessage()
         {
 
             Console.Clear();
@@ -860,7 +888,7 @@ namespace Inversions
             
         }
 
-        private void InvalidSelectionMessage()
+        private void ShowInvalidSelectionMessage()
         {
 
             Console.Clear();
