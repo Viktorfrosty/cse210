@@ -32,7 +32,9 @@ namespace Inversions
         public override void Evaluation()// W.I.P.
         {
 
-            Console.WriteLine("Compound saving evaluation placeholder.");
+            Console.Clear();
+
+            Console.WriteLine("Compound saving evaluation placeholder.\n");
 
         }
 

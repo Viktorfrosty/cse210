@@ -54,6 +54,8 @@ namespace Inversions
         public virtual void Evaluation()// W.I.P.
         {
 
+            Console.Clear();
+
             Console.WriteLine("parent evaluation placeholder.");
 
         }

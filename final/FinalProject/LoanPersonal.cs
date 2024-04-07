@@ -14,7 +14,9 @@ namespace Inversions
         public override void Evaluation()// W.I.P.
         {
 
-            Console.WriteLine("Personal loan evaluation placeholder.");
+            Console.Clear();
+
+            Console.WriteLine("Personal loan evaluation placeholder.\n");
 
         }
 

@@ -35,7 +35,7 @@ namespace Inversions
 
                 int menuSelection;
 
-                Console.Write($"Menu Options:\n  1: Show elements registered.\n  2: Add a new element to the registry.\n  3: Erase an element from the registry.\n  4: Update an element.\n  5: Show the teoric progression of an element.\n  6: Save the registry.\n  7: Load a registry.\n  0: Exit the program.\nSelection: ");
+                Console.Write($"Menu Options:\n  1: Show elements registered.\n  2: Add a new element to the registry.\n  3: Erase an element from the registry.\n  4: Update an element from the registry.\n  5: Show the teoric progression of an element.\n  6: Save the registry.\n  7: Load a registry.\n  0: Exit the program.\nSelection: ");
 
                 bool userInput = int.TryParse(Console.ReadLine(), out int userSelection);
 
@@ -107,19 +107,23 @@ namespace Inversions
 
                             break;
 
-                        case 6:
-
-                            SaveRegistry();
-
-                            break;
-
-                        case 7:
+                        case 6:// W.I.P.
 
                             Console.Clear();
 
-                            Console.WriteLine("Test load option.\n");
+                            Console.WriteLine("Save registry option placeholder.\n");
 
-                            //GetRegistry();
+                            // SaveRegistry();
+
+                            break;
+
+                        case 7:// W.I.P.
+ 
+                            Console.Clear();
+
+                            Console.WriteLine("Load registry option placeholder.\n");
+
+                            // GetRegistry();
 
                             break;
 
@@ -298,14 +302,14 @@ namespace Inversions
 
         }
 
-        private void AddElement()
+        private void AddElement()// W.I.P.
         {
 
-            //
+            // this was not really necessary after all...
 
         }
 
-        private void NewElement(int listSelection)// W.I.P.
+        private void NewElement(int listSelection)
         {
 
             string element = null;
@@ -334,237 +338,288 @@ namespace Inversions
 
             Console.Clear();
 
-            while (selectionRunning == true)
+            if (listSelection != 0)
             {
 
-                Console.Write("Amount: ");
-
-                while (true)
+                while (selectionRunning == true)
                 {
 
-                    consoleInput = int.TryParse(Console.ReadLine(), out int amountIput);
+                    Console.Write("Amount of money: ");
 
-                    if (consoleInput)
+                    while (true)
                     {
 
-                        amount = amountIput;
+                        consoleInput = double.TryParse(Console.ReadLine(), out double amountIput);
 
-                        break;
-
-                    }
-                    else
-                    {
-
-                        ShowInvalidInputMessage();    
-                    
-                    }
-
-                }
-
-                Console.Write("\nRate (do not include the % symbol): ");
-
-                while (true)
-                {
-
-                    consoleInput = int.TryParse(Console.ReadLine(), out int rateIput);
-
-                    if (consoleInput)
-                    {
-
-                        rate = rateIput;
-
-                        break;
-
-                    }
-                    else
-                    {
-
-                        ShowInvalidInputMessage();    
-                    
-                    }
-
-                }
-
-                Console.Write("\nlapse of time (days/months/years): ");
-
-                lapseOfTime = Console.ReadLine();
-
-                Console.Write($"\nduration (Number of {lapseOfTime}): ");
-
-                while (true)
-                {
-                    
-                    consoleInput = int.TryParse(Console.ReadLine(), out int durationInput);
-
-                    if (consoleInput)
-                    {
-
-                        duration = durationInput;
-
-                        break;
-
-                    }
-                    else
-                    {
-
-                        ShowInvalidInputMessage();    
-                    
-                    }
-
-                }
-
-                Console.Write("\ndescription: ");
-
-                description = Console.ReadLine();
-
-                switch (listSelection)
-                {
-
-                    case 1:
-
-                        element = "Saving";
-
-                        Console.Write("type (1. saving/loan): ");
-
-                        userInput = int.TryParse(Console.ReadLine(), out userSelection);
-
-                        if (userInput)
+                        if (consoleInput)
                         {
 
-                            switch (userSelection)
+                            amount = amountIput;
+
+                            break;
+
+                        }
+                        else
+                        {
+
+                            ShowInvalidInputMessage();    
+                        
+                        }
+
+                    }
+
+                    Console.Clear();
+                    
+                    Console.Write("Rate of interest (do not include the % symbol): ");
+
+                    while (true)
+                    {
+
+                        consoleInput = double.TryParse(Console.ReadLine(), out double rateInput);
+
+                        if (consoleInput)
+                        {
+
+                            rate = rateInput;
+
+                            break;
+
+                        }
+                        else
+                        {
+
+                            ShowInvalidInputMessage();    
+                        
+                        }
+
+                    }
+
+                    Console.Clear();
+                    
+                    Console.Write("Lapse of time (days/months/years): ");
+
+                    lapseOfTime = Console.ReadLine();
+
+                    Console.Clear();
+                
+                    Console.Write($"Duration (Number of {lapseOfTime}): ");
+
+                    while (true)
+                    {
+                        
+                        consoleInput = int.TryParse(Console.ReadLine(), out int durationInput);
+
+                        if (consoleInput)
+                        {
+
+                            duration = durationInput;
+
+                            break;
+
+                        }
+                        else
+                        {
+
+                            ShowInvalidInputMessage();    
+                        
+                        }
+
+                    }
+
+                    Console.Clear();
+                    
+                    Console.Write("Description: ");
+
+                    description = Console.ReadLine();
+
+                    switch (listSelection)
+                    {
+
+                        case 1:
+
+                            element = "Saving";
+
+                            bool savingsTypeSelection = true;
+
+                            while (savingsTypeSelection == true)
                             {
+
+                                Console.Clear();
                                 
-                                default:
+                                Console.Write("type (1. Simple / 2. Compound): ");
 
-                                    ShowInvalidSelectionMessage();
+                                userInput = int.TryParse(Console.ReadLine(), out userSelection);
 
-                                    break;
+                                if (userInput)
+                                {
 
-                                case 1:
-
-                                    type = "Simple";
-
-                                    SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
-
-                                    _savings.Add(simpleSaving);
-
-                                    selectionRunning = false;
-
-                                    break;
-
-                                case 2:
-
-                                    type = "Compound";
-
-                                    int interestCompound;
-
-                                    while (true)
+                                    switch (userSelection)
                                     {
                                         
-                                        consoleInput = int.TryParse(Console.ReadLine(), out int durationInput);
+                                        default:
 
-                                        if (consoleInput)
-                                        {
-
-                                            interestCompound = durationInput;
+                                            ShowInvalidSelectionMessage();
 
                                             break;
 
-                                        }
-                                        else
-                                        {
+                                        case 1:
 
-                                            ShowInvalidInputMessage();    
+                                            type = "Simple";
+
+                                            SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
+
+                                            _savings.Add(simpleSaving);
+
+                                            selectionRunning = false;
+
+                                            savingsTypeSelection = false;
+
+                                            break;
+
+                                        case 2:
+
+                                            type = "Compound";
+
+                                            int interestCompound;
+
+                                            while (true)
+                                            {
+
+                                                Console.Clear();
+
+                                                Console.Write("Times the interest is compounded yearly: ");
+                                                
+                                                consoleInput = int.TryParse(Console.ReadLine(), out int durationInput);
+
+                                                if (consoleInput)
+                                                {
+
+                                                    interestCompound = durationInput;
+
+                                                    break;
+
+                                                }
+                                                else
+                                                {
+
+                                                    ShowInvalidInputMessage();    
+                                                
+                                                }
+
+                                            }
+
+                                            CompoundSaving compoundSaving = new(amount, rate, interestCompound, registrationDate, lapseOfTime, duration, description);
+
+                                            _savings.Add(compoundSaving);
+
+                                            selectionRunning = false;
+
+                                            savingsTypeSelection = false;
+
+                                            break;
                                         
-                                        }
-
                                     }
+                                    
+                                }
+                                else
+                                {
 
-                                    CompoundSaving compoundSaving = new(amount, rate, interestCompound, registrationDate, lapseOfTime, duration, description);
+                                    ShowInvalidInputMessage();
 
-                                    _savings.Add(compoundSaving);
+                                }
 
-                                    selectionRunning = false;
-
-                                    break;
-                                
                             }
-                            
-                        }
-                        else
-                        {
 
-                            ShowInvalidInputMessage();
+                            break;
 
-                        }
+                        case 2:
 
-                        break;
+                            element = "Loan";
 
-                    case 2:
+                            bool loanTypeSelection = true;
 
-                        element = "Loan";
-
-                        Console.Write("type (1. saving/loan): ");
-
-                        userInput = int.TryParse(Console.ReadLine(), out userSelection);
-
-                        if (userInput)
-                        {
-
-                            switch (userSelection)
+                            while (loanTypeSelection)
                             {
-                                
-                                default:
 
-                                    ShowInvalidSelectionMessage();
+                                Console.Clear();
 
-                                    break;
+                                Console.Write("type (1. Personal / 2. Payday): ");
 
-                                case 1:
+                                userInput = int.TryParse(Console.ReadLine(), out userSelection);
 
-                                    type = "Personal";
+                                if (userInput)
+                                {
 
-                                    PersonalLoan personalLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
+                                    switch (userSelection)
+                                    {
+                                        
+                                        default:
 
-                                    _loans.Add(personalLoan);
+                                            ShowInvalidSelectionMessage();
 
-                                    selectionRunning = false;
+                                            break;
 
-                                    break;
+                                        case 1:
 
-                                case 2:
+                                            type = "Personal";
 
-                                    type = "Payday";
+                                            PersonalLoan personalLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
-                                    PaydayLoan paydayLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
+                                            _loans.Add(personalLoan);
 
-                                    _loans.Add(paydayLoan);
+                                            selectionRunning = false;
 
-                                    selectionRunning = false;
+                                            loanTypeSelection = false;
 
-                                    break;
-                                
+                                            break;
+
+                                        case 2:
+
+                                            type = "Payday";
+
+                                            PaydayLoan paydayLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
+
+                                            _loans.Add(paydayLoan);
+
+                                            selectionRunning = false;
+
+                                            loanTypeSelection = false;
+
+                                            break;
+                                        
+                                    }
+                                    
+                                }
+                                else
+                                {
+
+                                    ShowInvalidInputMessage();
+
+                                }
+
                             }
-                            
-                        }
-                        else
-                        {
 
-                            ShowInvalidInputMessage();
+                            break;
 
-                        }
-
-                        break;
+                    }
 
                 }
 
-            }
+                Console.Clear();
 
-            Console.WriteLine($"New {type} {element} created and added sucessfully");
+                Console.WriteLine($"New {type} {element} created and added sucessfully.\n");
+                
+            }
+            else
+            {
+
+                Console.Clear();
+
+            }
 
         }
         
-        private void EraseElement(int listSelection)// W.I.P.
+        private void EraseElement(int listSelection)
         {
 
             switch (listSelection)
@@ -690,10 +745,29 @@ namespace Inversions
 
         private void UpdateElement(int listSelection)// W.I.P.
         {
-            //
+
+            switch (listSelection)
+            {
+                
+                default:
+                    
+                    Console.Clear();
+
+                    Console.WriteLine("update option placeholder.\n");
+
+                    break;
+
+                case 0:
+
+                    Console.Clear();
+
+                    break;
+
+            }
+
         }
 
-        private void TeoricProgress(int listSelection)// W.I.P.
+        private void TeoricProgress(int listSelection)
         {
 
             switch (listSelection)
@@ -816,28 +890,25 @@ namespace Inversions
             
         }
 
-        private void SaveRegistry()
+        private void SaveRegistry()// W.I.P. (Possible moving this to another class)
         {
             
             Console.Clear();
 
-            Console.Write("\nSave the registry on a CSV file.\n(Do not add the .CSV at the end of the file name.\nFile name: ");
+            Console.Write("Save the registry on a CSV file.\n(Do not add the .CSV at the end of the file name.\nFile name: ");
 
             string fileName = Console.ReadLine()+".csv";
 
             if (_savings.Count > 0)
             {
 
-                using (StreamWriter outputFile = new(fileName))
+                using StreamWriter outputFile = new(fileName);
+
+                foreach (Saving record in _savings)
                 {
 
-                    foreach (Saving record in _savings)
-                    {
+                    outputFile.WriteLine(record.GetStringElement());
 
-                        outputFile.WriteLine(record.GetStringElement());
-
-                    }
-                    
                 }
 
             }
@@ -845,16 +916,13 @@ namespace Inversions
             else if (_loans.Count > 0)
             {
 
-                using (StreamWriter outputFile = new(fileName))
+                using StreamWriter outputFile = new(fileName);
+
+                foreach (Loan record in _loans)
                 {
 
-                    foreach (Loan record in _loans)
-                    {
+                    outputFile.WriteLine(record.GetStringElement());
 
-                        outputFile.WriteLine(record.GetStringElement());
-
-                    }
-                    
                 }
 
             }
@@ -865,81 +933,96 @@ namespace Inversions
 
         }
 
-        private void GetRegistry()// W.I.P.
+        private void GetRegistry()// W.I.P. (Possible moving this to another class)
         {
+
+            Console.Clear();
             
-            Console.Write("\nLoad the registry from a CSV file.\n(Do not add the .CSV at the end of the file name.\nFile name: ");
+            Console.Write("Load the registry from a CSV file.\n(Do not add the .CSV at the end of the file name.\nFile name: ");
 
             string fileName = Console.ReadLine()+".csv";
 
             if (File.Exists(fileName))
             {
 
-                using (StreamReader reader = new(fileName))
+                using StreamReader reader = new(fileName);
+
+                string line;
+
+                while ((line = reader.ReadLine()) != null)
                 {
 
-                    string line;
-
-                    while ((line = reader.ReadLine()) != null)
+                    try
                     {
 
-                        try
+                        string[] parts = line.Split("‖");
+
+                        string element = parts[0];
+
+                        string registrationDate = parts[1];
+
+                        double amount = double.Parse(parts[2]);
+
+                        double rate = double.Parse(parts[3]);
+
+                        string lapseOfTime = parts[4];
+
+                        int duration = int.Parse(parts[5]);
+
+                        string description = parts[6];
+
+                        switch (element)
                         {
-                            
-                            string[] parts = line.Split("‖");
 
-                            string element = parts[0];
+                            case "Simple Saving":
 
-                            string registrationDate = parts[1];
+                                SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
-                            int amount = int.Parse(parts[2]);
+                                _savings.Add(simpleSaving);
 
-                            int rate = int.Parse(parts[3]);
+                                break;
 
-                            string lapseOfTime = parts[4];
+                            case "Compound Saving":
 
-                            int duration = int.Parse(parts[5]);
+                                int interestCompound = int.Parse(parts[7]);
 
-                            string description = parts[6];
+                                CompoundSaving compoundSaving = new(amount, rate, interestCompound, registrationDate, lapseOfTime, duration, description);
 
-                            switch (element)
-                            {
-                                
-                                case "Simple Saving":
+                                _savings.Add(compoundSaving);
 
-                                    SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
+                                break;
 
-                                    _savings.Add(simpleSaving);
+                            case "Personal Loan":
 
-                                    break;
+                                PersonalLoan personalLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
-                                case "Compound Saving":
+                                _loans.Add(personalLoan);
 
-                                    int interestCompound = int.Parse(parts[7]);
+                                break;
 
-                                    CompoundSaving compoundSaving = new(amount, rate, interestCompound, registrationDate, lapseOfTime, duration, description);
+                            case "Payday Loan":
 
-                                    _savings.Add(compoundSaving);
+                                PaydayLoan paydayLoan = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
-                                    break;
+                                _loans.Add(paydayLoan);
 
-                                case "Simple Loan":// W.I.P.
-
-                                    break;
-
-                                // other loans.
-
-                            }
+                                break;
 
                         }
-                        catch (Exception)
-                        {
-                            
-                            Console.WriteLine($"Error: {fileName} File formated inproperly.");
 
-                            break;
+                        Console.Clear();
 
-                        }
+                        Console.WriteLine($"File {fileName} loaded succesfully.\n");
+
+                    }
+                    catch (Exception)
+                    {
+
+                        Console.Clear();
+
+                        Console.WriteLine($"Error: {fileName} File formated inproperly.\n");
+
+                        break;
 
                     }
 
@@ -971,7 +1054,7 @@ namespace Inversions
 
             Console.Clear();
 
-            Console.WriteLine("Select a valid number.\n");
+            Console.WriteLine("Select a valid option.\n");
             
         }
 
