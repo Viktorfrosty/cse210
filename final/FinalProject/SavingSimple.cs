@@ -7,16 +7,22 @@ namespace Inversions
         public SimpleSaving(double amount, double rate, string registrationDate, string lapseOfTime, int duration, string description): base(amount, rate, registrationDate, lapseOfTime, duration, description)
         {
 
-            _type = "Simple Saving";
+            _subType = "Simple";
 
         }
 
-        public override void Evaluation()// W.I.P.
+        public override void Evaluation()
         {
 
             Console.Clear();
 
-            Console.WriteLine("Simple saving evaluation placeholder.\n");
+            ShowCalculationDetails();
+
+            double durationIntervail = DurationIntervail();
+
+            _calculation = _amount * (1 + (_rate / 100) * durationIntervail);
+
+            SavingsOperations();
             
         }
 
