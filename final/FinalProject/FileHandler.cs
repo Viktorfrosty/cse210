@@ -114,10 +114,6 @@ namespace Inversions
 
                 using StreamReader reader = new(fileName);
 
-                _savings.Clear();
-
-                _loans.Clear();
-
                 string line;
 
                 while ((line = reader.ReadLine()) != null)
@@ -202,8 +198,12 @@ namespace Inversions
 
                     }
 
-                    if(_temporalLoansList.Count > 0 || _temporalSavingsList.Count > 0)
+                    if(_temporalLoansList.Count >= 1 || _temporalSavingsList.Count >= 1)
                     {
+
+                        _savings.Clear();
+
+                        _loans.Clear();
 
                         _loans = _temporalLoansList;
 
