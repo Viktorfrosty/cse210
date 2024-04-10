@@ -4,11 +4,11 @@ namespace Inversions
     public class ElementHandler
     {
 
-        DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
+        private DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
 
-        List<Saving> _savings;
+        private List<Saving> _savings;
 
-        List<Loan> _loans;
+        private List<Loan> _loans;
 
         public ElementHandler(List<Saving> savings, List<Loan> loans)
         {

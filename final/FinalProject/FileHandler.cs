@@ -3,10 +3,10 @@ namespace Inversions
     public class FileHandler
     {
 
-        List<Saving> _savings;
+        private List<Saving> _savings;
 
-        List<Loan> _loans;
-
+        private List<Loan> _loans;
+        
         public FileHandler(List<Saving> savings, List<Loan> loans)
         {
 
@@ -37,7 +37,7 @@ namespace Inversions
 
                 Console.Clear();
 
-                if (_savings.Count > 0 && _loans.Count > 0)
+                if (_savings.Count >= 1 && _loans.Count >= 1 )
                 {
 
                     using StreamWriter outputFile = new(fileName);
@@ -60,7 +60,7 @@ namespace Inversions
 
                 }
                 
-                else if (_loans.Count > 0 && _savings.Count < 1)
+                else if (_loans.Count >= 1 && _savings.Count < 1)
                 {
 
                     using StreamWriter outputFile = new(fileName);
@@ -76,7 +76,7 @@ namespace Inversions
                     
                 }
 
-                else if (_savings.Count > 0 && _loans.Count < 1)
+                else if (_savings.Count >= 1 && _loans.Count < 1)
                 {
 
                     using StreamWriter outputFile = new(fileName);
@@ -108,9 +108,9 @@ namespace Inversions
             if (File.Exists(fileName))
             {
 
-                List<Saving> _temporalSavingsList = new();
+                _loans.Clear();
 
-                List<Loan> _temporalLoansList = new();
+                _savings.Clear();
 
                 using StreamReader reader = new(fileName);
 
@@ -145,7 +145,7 @@ namespace Inversions
 
                                 SimpleSaving simpleSaving = new(amount, rate, registrationDate, lapseOfTime, duration, description);
 
-                                _temporalSavingsList.Add(simpleSaving);
+                                _savings.Add(simpleSaving);
 
                                 break;
 
@@ -155,7 +155,7 @@ namespace Inversions
 
                                 CompoundSaving compoundSaving = new(amount, rate, interestCompound, registrationDate, lapseOfTime, duration, description);
 
-                                _temporalSavingsList.Add(compoundSaving);
+                                _savings.Add(compoundSaving);
 
                                 break;
 
@@ -165,7 +165,7 @@ namespace Inversions
 
                                 PersonalLoan personalLoan = new(amount, anualPayments, rate, registrationDate, lapseOfTime, duration, description);
 
-                                _temporalLoansList.Add(personalLoan);
+                                _loans.Add(personalLoan);
 
                                 break;
 
@@ -175,12 +175,11 @@ namespace Inversions
 
                                 PaydayLoan paydayLoan = new(amount, fees, rate, registrationDate, lapseOfTime, duration, description);
 
-                                _temporalLoansList.Add(paydayLoan);
+                                _loans.Add(paydayLoan);
 
                                 break;
-
                         }
-
+                        
                         Console.Clear();
 
                         Console.WriteLine($"File {fileName} loaded succesfully.\n");
@@ -196,22 +195,6 @@ namespace Inversions
 
                         break;
 
-                    }
-
-                    if(_temporalLoansList.Count >= 1 || _temporalSavingsList.Count >= 1)
-                    {
-
-                        _savings.Clear();
-
-                        _loans.Clear();
-
-                        _loans = _temporalLoansList;
-
-                        _savings = _temporalSavingsList;
-                        
-                        Console.Clear();
-
-                        Console.WriteLine($"File {fileName} loaded succesfully.\n");
                     }
 
                 }

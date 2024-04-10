@@ -4,7 +4,7 @@ namespace Inversions
     public class WalletTracker
     {
 
-        DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
+        private DateOnly _date = DateOnly.FromDateTime(DateTime.Now);
 
         private List<Saving> _savings = new();
 
@@ -26,9 +26,7 @@ namespace Inversions
 
             ElementHandler elementHandler = new(_savings, _loans);
 
-            Console.Clear();
-
-            Console.WriteLine($"Welcome to the basic personal finance calculator program.\nDate: {_date}\n");
+            Console.WriteLine($"\nWelcome to the basic personal finance calculator program.\nDate: {_date}\n");
 
             while (mainMenuRunning == true)
             {
